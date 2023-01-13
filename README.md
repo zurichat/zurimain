@@ -1,4 +1,4 @@
-# Turborepo starter
+# ZURIMAIN
 
 This is an official Yarn v1 starter turborepo.
 
@@ -8,21 +8,31 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/) as a package manager. I
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `core`: a [single-spa microfrontend](https://single-spa.js.org/docs/microfrontends-concept) this houses most of zurimain's ui
+- `root-config`: a [single-spa rootconfig](https://single-spa.js.org/docs/configuration) this is the zurimain wrapper and is what binds all oackages and plugins
+- `utilities`: a library housing essential helper functions used by all plugins
+- `ui`: a stub React component library shared by both `core` application and all plugins
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+## Getting Started.
 
-This turborepo has some additional tools already setup for you:
+Make sure you have nodejs installed by running the following command:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+```bash
+node -v
+```
+
+If the output is not the version of your nodejs installation, install nodejs from [here](https://nodejs.org/en/download/)
+
+After installing nodejs install [yarn](https://www.npmjs.com/package/yarn)
+if you have it then install the project's dependencies:
+
+```bash
+yarn install
+```
 
 ### Build
 
@@ -33,6 +43,18 @@ cd my-turborepo
 yarn run build
 ```
 
+To remove dist folder
+
+```bash
+yarn clean
+```
+
+To remove dist folder and all node_modules
+
+```bash
+yarn clean-fresh
+```
+
 ### Develop
 
 To develop all apps and packages, run the following command:
@@ -41,6 +63,26 @@ To develop all apps and packages, run the following command:
 cd my-turborepo
 yarn run dev
 ```
+
+Open [http://localhost:9000](http://localhost:9000) with your browser to see the result.
+
+## Contributing
+
+For detailed information on how to go about contributing to this project. Check out the
+
+- [Contribution Guide](docs/CONTRIBUTING.md)
+- [Styling Guide](docs/STYLING.md)
+
+**Before send PR or making a merge make sure you code is properly formatted.** You can easily do that by running
+
+```bash
+yarn lint # to lint all files # in project directory
+yarn lint:js # to lint only js,jsx files # in project directory
+
+yarn prettify # to prettify files # in project directory
+```
+
+you can also lint for all files in the repo by running that command in the root folder.
 
 ### Remote Caching
 
