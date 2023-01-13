@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOMClient from "react-dom/client";
 import singleSpaReact from "single-spa-react";
-import rootComponent from "./root.component.js";
+import rootComponent from "./root.component";
 
 export const { bootstrap, mount, unmount } = singleSpaReact({
   React,
