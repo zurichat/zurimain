@@ -1,5 +1,13 @@
+import { Button } from "@zuri/ui";
+import { logger } from "@zuri/utilities";
+
 function App() {
-  return <>hi</>;
+  logger.info("hi");
+  return (
+    <>
+      <Button />
+    </>
+  );
 }
 
 export default App;
