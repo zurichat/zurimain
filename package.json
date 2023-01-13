@@ -15,14 +15,21 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "start": "serve -s dist/",
+    "build": "concurrently --kill-others-on-fail -m 1 \"yarn run clean\" \"turbo run build\"",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "yarn clean:build",
+    "clean:build": "rimraf './dist'",
+    "clean-fresh": "rimraf './node_modules' && turbo run clean"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "eslint-config-custom": "*",
     "prettier": "latest",
+    "rimraf": "^4.0.4",
+    "serve": "^14.1.2",
     "turbo": "latest"
   },
   "engines": {

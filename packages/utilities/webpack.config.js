@@ -1,6 +1,6 @@
 import Dotenv from "dotenv-webpack";
 import { findUpSync } from "find-up";
-import { dirname } from "path";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import singleSpaDefaults from "webpack-config-single-spa";
 import { merge } from "webpack-merge";
@@ -23,6 +23,9 @@ export default webpackConfigEnv => {
         path: findEnv()
       })
     ],
+    output: {
+      path: path.join(__dirname, "..", "..", "dist")
+    },
     resolve: {
       extensions: [".mjs", ".ts", ".tsx", ".js", ".jsx", ".wasm", ".json"]
     }

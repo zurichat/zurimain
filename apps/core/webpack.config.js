@@ -1,5 +1,7 @@
+/* eslint-env node */
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react");
+const path = require("path");
 
 module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
@@ -25,6 +27,9 @@ module.exports = webpackConfigEnv => {
   return merge(defaultConfig, {
     // customizations go here
     externals,
+    output: {
+      path: path.join(__dirname, "..", "..", "dist")
+    },
     resolve: {
       extensions: [".mjs", ".ts", ".tsx", ".js", ".jsx", ".wasm", ".json"]
     }
