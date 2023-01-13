@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>ZuriChat</title>
+
+    <meta name="importmap-type" content="systemjs-importmap" />
+    <script type="systemjs-importmap" src="./assets/importmap.json"></script>
+
+    <% if (isLocal) { %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@zuri/root-config": "//localhost:9000/zuri-root-config.js",
+          "@zuri/core": "//localhost:9001/zuri-core.js"
+          "@zuri/ui": "//localhost:9002/zuri-ui.js"
+          "@zuri/utilities": "//localhost:9003/zuri-utilities.js"
+        }
+      }
+    </script>
+    <% } %>
+
+    <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@2.2.0/dist/import-map-overrides.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.min.js"></script>
+
+    <template id="single-spa-layout">
+      <single-spa-router>
+        <div class="main-content mt-16">
+          <route default>
+            <application name="@zuri/core"></application>
+          </route>
+
+          <!-- <route default>
+            <h1 class="flex flex-row justify-center p-16">
+              <p class="max-w-md">
+                This example project shows independently built and deployed
+                microfrontends that use React and single-spa. Each nav link
+                above takes you to a different microfrontend.
+              </p>
+            </h1>
+          </route> -->
+        </div>
+      </single-spa-router>
+    </template>
+  </head>
+  <body>
+    <script>
+      System.import("@zuri/root-config");
+      System.import("@zuri/core");
+    </script>
+    <import-map-overrides-full
+      show-when-local-storage="devtools"
+      dev-libs
+    ></import-map-overrides-full>
+  </body>
+</html>
