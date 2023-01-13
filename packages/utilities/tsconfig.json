@@ -1,5 +1,5 @@
 {
-  "extends": "tsconfig/react-library.json",
+  "extends": "@zuri/tsconfig/react-library.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"]
   },

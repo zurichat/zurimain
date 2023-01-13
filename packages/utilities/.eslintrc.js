@@ -1,5 +1,5 @@
 module.exports = {
   root: true,
-  extends: ["custom"],
+  extends: ["@zuri/custom"],
   parser: "@babel/eslint-parser"
 };

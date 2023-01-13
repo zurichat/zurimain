@@ -1,4 +1,4 @@
-import { User } from "types";
+import { User } from "@zuri/types";
 
 /**
  * @returns {Promise<object>} returns an object containing the user's info
