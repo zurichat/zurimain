@@ -2,6 +2,7 @@
 const { mergeWithRules } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react");
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = webpackConfigEnv => {
   const defaultConfig = singleSpaDefaults({
@@ -9,6 +10,8 @@ module.exports = webpackConfigEnv => {
     projectName: "ui",
     webpackConfigEnv
   });
+
+  const externals = ["react", "react-dom", "@emotion/react"];
 
   const config = mergeWithRules({
     module: {
@@ -19,6 +22,7 @@ module.exports = webpackConfigEnv => {
     }
   })(defaultConfig, {
     // customize the webpack config here
+    externals,
     module: {
       rules: [
         {
@@ -39,7 +43,12 @@ module.exports = webpackConfigEnv => {
     },
     resolve: {
       extensions: [".mjs", ".ts", ".tsx", ".js", ".jsx", ".wasm", ".json"]
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        React: "react"
+      })
+    ]
   });
 
   return config;
