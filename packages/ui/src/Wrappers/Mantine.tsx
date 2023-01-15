@@ -13,4 +13,14 @@ const MantineWrapper: React.FC<MantineWrapperProps> = ({ children }) => {
   );
 };
 
+export const withMantine = <T extends {}>(Component: React.FC<T>) => {
+  return (props: T) => {
+    return (
+      <MantineWrapper>
+        <Component {...props} />
+      </MantineWrapper>
+    );
+  };
+};
+
 export default MantineWrapper;

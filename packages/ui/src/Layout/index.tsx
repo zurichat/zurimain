@@ -1,37 +1,29 @@
-import { AppShell, createStyles } from "@mantine/core";
+import { AppShell, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
-import MantineWrapper from "../Wrappers/Mantine";
+import { withMantine } from "../Wrappers/Mantine";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-
-const useStyles = createStyles(theme => {
-  return {
-    main: {
-      background:
-        theme.colorScheme === "light"
-          ? theme.colors.dark[8]
-          : theme.colors.gray[0]
-    }
-  };
-});
 
 interface LayoutProps {
   children: React.ReactNode;
   hideHeader?: boolean;
   hideSideBar?: boolean;
 }
-export const Layout: React.FC<LayoutProps> = ({
-  children,
-  hideHeader = false,
-  hideSideBar = false
-}) => {
-  const { classes } = useStyles();
-  const [opened, setOpened] = useState(false);
+export const Layout = withMantine<LayoutProps>(
+  ({ children, hideHeader = false, hideSideBar = false }) => {
+    const theme = useMantineTheme();
+    const [opened, setOpened] = useState(false);
 
-  return (
-    <MantineWrapper>
+    return (
       <AppShell
-        className={classes.main}
+        styles={{
+          main: {
+            background:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[8]
+                : theme.colors.gray[0]
+          }
+        }}
         navbarOffsetBreakpoint="sm"
         header={
           hideHeader ? <></> : <Header opened={opened} onOpen={setOpened} />
@@ -40,8 +32,8 @@ export const Layout: React.FC<LayoutProps> = ({
       >
         {children}
       </AppShell>
-    </MantineWrapper>
-  );
-};
+    );
+  }
+);
 
 export default Layout;
