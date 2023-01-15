@@ -11,7 +11,7 @@ module.exports = webpackConfigEnv => {
     webpackConfigEnv
   });
 
-  const externals = ["react", "react-dom", "@emotion/react"];
+  const externals = ["react", "react-dom"];
 
   const config = mergeWithRules({
     module: {
