@@ -22,7 +22,6 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = props => {
   const { opened, onOpen } = props;
   const { classes, theme } = useStyles();
-  console.log(theme.colorScheme);
 
   return (
     <MantineHeader height={{ base: 50, md: 70 }} p="md">
