@@ -1,5 +1,5 @@
-export const Root = () => {
-  return <>sidebar</>;
-};
+import Sidebar from "./Sidebar";
 
-export default Root;
+export default function Root() {
+  return <Sidebar />;
+}
