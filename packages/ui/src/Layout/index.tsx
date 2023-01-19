@@ -1,5 +1,5 @@
 import { AppShell, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
 import { withMantine } from "../Wrappers/Mantine";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -12,7 +12,8 @@ interface LayoutProps {
 export const Layout = withMantine<LayoutProps>(
   ({ children, hideHeader = false, hideSideBar = false }) => {
     const theme = useMantineTheme();
-    const [opened, setOpened] = useState(false);
+    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+      useDisclosure(false);
 
     return (
       <AppShell
@@ -26,9 +27,25 @@ export const Layout = withMantine<LayoutProps>(
         }}
         navbarOffsetBreakpoint="sm"
         header={
-          hideHeader ? <></> : <Header opened={opened} onOpen={setOpened} />
+          hideHeader ? (
+            <></>
+          ) : (
+            <Header
+              drawerOpened={drawerOpened}
+              toggleDrawer={toggleDrawer}
+              closeDrawer={closeDrawer}
+              links={[
+                { link: "/downloads", label: "Downloads" },
+                { link: "/documentation", label: "Documentation" },
+                {
+                  label: "About",
+                  links: [{ link: "/contact", label: "Contact" }]
+                }
+              ]}
+            />
+          )
         }
-        navbar={hideSideBar ? <></> : <Sidebar opened={opened} />}
+        navbar={hideSideBar ? <></> : <Sidebar opened={drawerOpened} />}
       >
         {children}
       </AppShell>
