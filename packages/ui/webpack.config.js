@@ -11,7 +11,7 @@ module.exports = webpackConfigEnv => {
     webpackConfigEnv
   });
 
-  const externals = ["react", "react-dom"];
+  const externals = ["react", "react-dom", "react-router-dom"];
 
   const config = mergeWithRules({
     module: {

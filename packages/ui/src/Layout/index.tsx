@@ -1,16 +1,16 @@
 import { AppShell, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { Outlet } from "react-router-dom";
 import { withMantine } from "../Wrappers/Mantine";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
 interface LayoutProps {
-  children: React.ReactNode;
   hideHeader?: boolean;
   hideSideBar?: boolean;
 }
 export const Layout = withMantine<LayoutProps>(
-  ({ children, hideHeader = false, hideSideBar = false }) => {
+  ({ hideHeader = false, hideSideBar = false }) => {
     const theme = useMantineTheme();
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
       useDisclosure(false);
@@ -47,7 +47,7 @@ export const Layout = withMantine<LayoutProps>(
         }
         navbar={hideSideBar ? <></> : <Sidebar opened={drawerOpened} />}
       >
-        {children}
+        <Outlet />
       </AppShell>
     );
   }
