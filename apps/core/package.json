@@ -17,7 +17,8 @@
     "@zuri/ui": "*",
     "@zuri/utilities": "*",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

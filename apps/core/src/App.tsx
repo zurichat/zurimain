@@ -1,13 +1,7 @@
-import { Button, Layout } from "@zuri/ui";
-import { logger } from "@zuri/utilities";
+import { Layout } from "@zuri/ui";
 
 function App() {
-  logger.info("hi");
-  return (
-    <Layout>
-      <Button />
-    </Layout>
-  );
+  return <Layout />;
 }
 
 export default App;
