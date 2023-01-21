@@ -1,23 +1,20 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import { ContactPage, ErrorPage } from "../pages";
+import { RouteObject } from "react-router-dom";
+import { ContactPage } from "../pages";
+import AboutPage from "../pages/about";
+import HelpPage from "../pages/help/contact";
+import HomePage from "../pages/home";
+import PluginsPage from "../pages/plugins";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/",
-        element: <div>Home</div>
-      },
-      {
-        path: "/contact",
-        element: <ContactPage />
-      }
-    ]
-  }
-]);
+export function getExternalRoutes(): RouteObject[] {
+  return [
+    { path: "/", element: <HomePage /> },
+    { path: "/about", element: <AboutPage /> },
+    { path: "/contact", element: <ContactPage /> },
+    { path: "/plugins", element: <PluginsPage /> },
+    { path: "/help", element: <HelpPage /> }
+  ];
+}
 
-export default router;
+export function getWorkspaceRoutes(): RouteObject[] {
+  return [];
+}
