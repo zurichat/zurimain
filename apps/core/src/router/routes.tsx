@@ -12,9 +12,6 @@ export function getExternalRoutes(): RouteObject[] {
     { path: "/contact", element: <ContactPage /> },
     { path: "/plugins", element: <PluginsPage /> },
     { path: "/help", element: <HelpPage /> }
+    // add new external routes here
   ];
-}
-
-export function getWorkspaceRoutes(): RouteObject[] {
-  return [];
 }

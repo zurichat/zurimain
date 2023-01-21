@@ -1,7 +1,7 @@
 import { Layout } from "@zuri/ui";
 import { createBrowserRouter } from "react-router-dom";
 import { ErrorPage } from "../pages";
-import { getExternalRoutes, getWorkspaceRoutes } from "./routes";
+import { getExternalRoutes } from "./routes";
 
 const router = createBrowserRouter([
   {
@@ -9,12 +9,6 @@ const router = createBrowserRouter([
     element: <Layout hideSideBar />,
     errorElement: <ErrorPage />,
     children: getExternalRoutes()
-  },
-  {
-    path: "/workspace",
-    element: <div>Workspace root layout</div>,
-    errorElement: <div>Workspace root error layout</div>,
-    children: getWorkspaceRoutes()
   }
 ]);
 
