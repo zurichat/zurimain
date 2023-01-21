@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@zuri/root-config": "/zuri-root-config.js",
+    "@zuri/core": "/zuri-core.js",
+    "@zuri/ui": "/zuri-ui.js",
+    "@zuri/utilities": "/zuri-utilities.js"
+  }
+}
