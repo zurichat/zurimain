@@ -1,6 +1,6 @@
 import { MantineTheme } from "@mantine/core";
 
 export const mantineConfig: Partial<MantineTheme> = {
-  colorScheme: "dark"
+  colorScheme: "light"
 };
 export default mantineConfig;

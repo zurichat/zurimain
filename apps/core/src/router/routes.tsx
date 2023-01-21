@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
-import { ContactPage } from "../pages";
 import AboutPage from "../pages/about";
-import HelpPage from "../pages/help/contact";
+import ContactPage from "../pages/contact";
+import HelpPage from "../pages/help";
 import HomePage from "../pages/home";
 import PluginsPage from "../pages/plugins";
 

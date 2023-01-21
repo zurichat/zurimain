@@ -1,7 +1,6 @@
 import {
   Box,
   Burger,
-  Button,
   Center,
   createStyles,
   Divider,
@@ -15,6 +14,7 @@ import {
   Title
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
+import { Button } from "../Button";
 
 const useStyles = createStyles(theme => ({
   innerLink: {
@@ -198,7 +198,7 @@ export const Header: React.FC<HeaderProps> = props => {
 
           <Group position="center" grow pb="xl" px="md">
             <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="subtle">Sign up</Button>
           </Group>
         </ScrollArea>
       </Drawer>
