@@ -1,6 +1,7 @@
 import {
   Box,
   Burger,
+  Button,
   Center,
   createStyles,
   Divider,
@@ -14,7 +15,6 @@ import {
   Title
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
-import { Button } from "../Button";
 
 const useStyles = createStyles(theme => ({
   innerLink: {
@@ -37,7 +37,7 @@ const useStyles = createStyles(theme => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
+    fontSize: theme.fontSizes.md,
     fontWeight: 500,
 
     "&:hover": {
@@ -151,7 +151,7 @@ export const Header: React.FC<HeaderProps> = props => {
 
   return (
     <Box>
-      <MantineHeader height={60} px="md">
+      <MantineHeader height={80} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           {appTitle}
 
@@ -160,8 +160,12 @@ export const Header: React.FC<HeaderProps> = props => {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button size="lg" variant="subtle">
+              Log in
+            </Button>
+            <Button size="lg" variant="filled">
+              Sign up
+            </Button>
           </Group>
 
           <Burger
@@ -197,8 +201,12 @@ export const Header: React.FC<HeaderProps> = props => {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button variant="subtle">Sign up</Button>
+            <Button size="lg" variant="filled">
+              Log in
+            </Button>
+            <Button size="lg" variant="subtle">
+              Sign up
+            </Button>
           </Group>
         </ScrollArea>
       </Drawer>

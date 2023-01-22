@@ -36,12 +36,10 @@ export const Layout = withMantine<LayoutProps>(
               toggleDrawer={toggleDrawer}
               closeDrawer={closeDrawer}
               links={[
+                { link: "/pricing", label: "Pricing" },
+                { link: "/about", label: "About ZuriChat" },
                 { link: "/downloads", label: "Downloads" },
-                { link: "/documentation", label: "Documentation" },
-                {
-                  label: "About",
-                  links: [{ link: "/contact", label: "Contact" }]
-                }
+                { link: "/contact", label: "Contact Us" }
               ]}
             />
           )
