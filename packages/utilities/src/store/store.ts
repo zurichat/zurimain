@@ -1,4 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
+import type { TypedUseSelectorHook } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import uiReducer from "./slices/ui/slice";
 import userReducer from "./slices/user/slice";
 
 /**
@@ -32,11 +35,16 @@ import userReducer from "./slices/user/slice";
  */
 export const store = configureStore({
   reducer: {
-    user: userReducer
+    user: userReducer,
+    ui: uiReducer
   },
   devTools: process.env.NODE_ENV !== "production"
 });
 
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
+
 export default store;

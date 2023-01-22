@@ -1,4 +1,4 @@
-import { User } from "types";
+import { User } from "@zuri/types";
 
 /**
  * @param {string} userEmail email of the user to get
