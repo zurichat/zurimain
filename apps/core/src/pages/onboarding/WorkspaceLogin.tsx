@@ -113,7 +113,8 @@ const useStyles = createStyles((theme) => ({
 
     urlField: {
         width: '100%',
-        maxWidth: '270px'
+        maxWidth: '270px',
+        backgroundColor: 'transparent'
     }
 }));
 
@@ -179,7 +180,7 @@ const Login = () => {
                     <Button fullWidth mt="xl" size="md" bg={'transparent'}variant='outline' color='#14466F' mb={25} >
                         Create A New Workspace
                     </Button>
-                </Paper>  
+                </Paper>
             </Flex>
             <Paper className={classes.formImage}>
             </Paper>
