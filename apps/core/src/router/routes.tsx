@@ -4,7 +4,7 @@ import { ContactPage, ErrorPage } from "../pages";
 
 // Onboarding
 import Login from "../pages/onboarding/Login";
-import SignUp from "../pages/onboarding/SignUp";
+import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/workspace-login",
+    element: <WorkspaceLogin />
   }
 ]);
 
