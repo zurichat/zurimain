@@ -37,6 +37,7 @@
     "@mantine/core": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
     "@tabler/icons": "^1.119.0",
+    "@zuri/utilities": "*",
     "react-router-dom": "^6.7.0"
   }
 }
