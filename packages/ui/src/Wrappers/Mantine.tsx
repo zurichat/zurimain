@@ -7,7 +7,7 @@ interface MantineWrapperProps {
 }
 const MantineWrapper: React.FC<MantineWrapperProps> = ({ children }) => {
   return (
-    <MantineProvider theme={mantineConfig} inherit>
+    <MantineProvider theme={mantineConfig as any} inherit>
       {children}
     </MantineProvider>
   );
