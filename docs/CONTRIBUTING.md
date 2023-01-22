@@ -2,7 +2,7 @@
 
 # Contributing to Zuri Main Web App
 
-## IMPORTANT!!! : OPEN YOUR PULL REQUESTS ON `dev` BRANCH, NOT `main`
+## IMPORTANT!!! : OPEN YOUR PULL REQUESTS ON `main` BRANCH
 
 First off, thanks for taking the time to be part of this awesome project ❤️
 
@@ -11,7 +11,7 @@ All Team members contribution are valued and encouraged, therefore, do not hesit
 ## Table of Contents
 
 - [Contributing to Zuri Main Web App](#contributing-to-zuri-main-web-app)
-  - [IMPORTANT!!! : OPEN YOUR PULL REQUESTS ON `dev` BRANCH, NOT `main`](#important--open-your-pull-requests-on-dev-branch-not-main)
+  - [IMPORTANT!!! : OPEN YOUR PULL REQUESTS ON `main` BRANCH](#important--open-your-pull-requests-on-main-branch)
   - [Table of Contents](#table-of-contents)
   - [I Have a Question](#i-have-a-question)
   - [I Want To Contribute](#i-want-to-contribute)
@@ -39,11 +39,11 @@ Once again, reach out to your Team Lead about any confusion you might face.
 
 In order to contribute to this project, the entire process follows the following structure
 
-- You identify an [issue](https://linear.app/zurichat2/team/ZUR/all) you want to work on, or is assigned to you.
+- You identify an [issue](https://github.com/zurichat/zurimain/issues) you want to work on, or is assigned to you.
 - You make changes that solves this issue, you then write tests (Where required) and ensure that it passes.
-- You open a pull request, which will be reviewed by your Team lead or PR Lead, and merged if it checks the right boxes.
+- You open a pull request, which will be reviewed by the zuri chat team, and merged if it checks the right boxes.
 
-Congratulations, you have just contributed,🎉🎉🎉 now pick another [issue](https://linear.app/zurichat2/team/ZUR/all) and repeat the same process.
+Congratulations, you have just contributed,🎉🎉🎉 now pick another [issue](https://github.com/zurichat/zurimain/issues) and repeat the same process.
 
 ## Editor setup
 
@@ -59,7 +59,7 @@ So here is a run down of how you would go about contributing:
 
 - #### Fork your own copy of the Repository
 
-  The first thing you will want to do is fork [this](https://github.com/zurichat/zurimain) repository. What this mean, is that you get your own copy of this repository. You can then safely make changes to your own copy, and then later, you can submit your changes, and tell the PR leads to combine (merge) the changes you made to the central/main repository. Here is a short [Video](https://youtu.be/ATz2mZG78MU) showing how to do that.
+  The first thing you will want to do is fork [this](https://github.com/zurichat/zurimain) repository. What this mean, is that you get your own copy of this repository. You can then safely make changes to your own copy, and then later, you can submit your changes, and tell the PR leads to combine (merge) the changes you made to the central/main repository.
 
 - #### Clone the Repository on your Local Machine
 
@@ -102,7 +102,6 @@ So here is a run down of how you would go about contributing:
     > `git push origin feat/signup`
     >
     > Which pushes your changes to your online copy, after which you then open a pull request.
-  - Here is a [Video](https://youtu.be/VY4-yw7dbY8) showing how to perform that.
 
 - #### Opening Pull requests
 
@@ -116,7 +115,6 @@ So here is a run down of how you would go about contributing:
   - Explain what your changes does, adding images and proof (test) if needed.
   - Click the open pull request button and wait.
   - Add comments where neccesary and wait for the PR Leads to check.
-    Here is a [Video](https://youtu.be/3_LgvC0-Om4) showing how to go about it.
 
 - #### Constantly update from upstream
 
@@ -145,8 +143,7 @@ Let's build the next generation workspace, shall we ?🎉
 - ### Pull Requests
 
   - Take note of all instructions above
-  - The main branch for development would be the **DEVELOP** branch
-  - Do not make a pull request with changes to the main branch
+  - The main branch for development would be the **main** branch
   <!--   - Create a branch in the format...Feat/(Task) e.g Feat/ Button Component and implement your work only in such branch -->
   - Whatever task it is that you do must be responsive on all screens
   - Add a live link to your Pull Request
