@@ -14,10 +14,12 @@
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
+    "@reduxjs/toolkit": "^1.9.1",
     "@zuri/ui": "*",
     "@zuri/utilities": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.7.0"
   },
   "devDependencies": {
