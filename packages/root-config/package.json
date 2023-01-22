@@ -4,17 +4,17 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "webpack serve --port 9000 --env isLocal",
-    "lint": "eslint src",
+    "lint": "eslint '**/*.+(ts|js|tsx|jsx)'",
     "build": "webpack --mode=production",
     "analyze": "webpack --env analyze"
   },
   "dependencies": {
-    "eslint-config-custom": "^0.0.0",
-    "single-spa": "^5.9.4",
-    "single-spa-layout": "^2.1.0",
     "@zuri/core": "*",
     "@zuri/ui": "*",
-    "@zuri/utilities": "*"
+    "@zuri/utilities": "*",
+    "eslint-config-custom": "^0.0.0",
+    "single-spa": "^5.9.4",
+    "single-spa-layout": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -24,8 +24,9 @@
     "@zuri/tsconfig": "*",
     "babel-loader": "^9.1.2",
     "copy-webpack-plugin": "^11.0.0",
-    "eslint": "^8.31.0",
+    "eslint": "^8.32.0",
     "html-webpack-plugin": "^5.5.0",
+    "typescript": "^4.9.4",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-config-single-spa": "^5.3.0",
