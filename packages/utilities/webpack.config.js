@@ -16,8 +16,11 @@ export default webpackConfigEnv => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
 
+  const externals = ["react", "react-dom", "react-redux"];
+
   return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object
+    externals,
     plugins: [
       new Dotenv({
         path: findEnv()

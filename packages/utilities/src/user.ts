@@ -6,7 +6,7 @@ import { User } from "@zuri/types";
  * @description get the currently logged in user's info from the local cache or the server
  */
 export const getUserInfo = async (): Promise<User> => {
-  let user = {} as User;
+  const user = {} as User;
 
   return user;
 };

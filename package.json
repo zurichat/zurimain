@@ -27,6 +27,7 @@
   "devDependencies": {
     "@zuri/eslint-config-custom": "*",
     "concurrently": "^7.6.0",
+    "eslint": "^8.32.0",
     "prettier": "latest",
     "rimraf": "^4.0.4",
     "serve": "^14.1.2",
