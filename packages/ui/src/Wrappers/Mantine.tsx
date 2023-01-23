@@ -1,4 +1,4 @@
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, MantineThemeOverride } from "@mantine/core";
 import React from "react";
 import { mantineConfig } from "../config";
 
@@ -7,7 +7,7 @@ interface MantineWrapperProps {
 }
 const MantineWrapper: React.FC<MantineWrapperProps> = ({ children }) => {
   return (
-    <MantineProvider theme={mantineConfig as any} inherit>
+    <MantineProvider theme={mantineConfig as MantineThemeOverride} inherit>
       {children}
     </MantineProvider>
   );
