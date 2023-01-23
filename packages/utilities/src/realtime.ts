@@ -7,7 +7,7 @@ const centrifuge = new Centrifuge(WS_CONNECTION_URL, {
 });
 
 type cbs<Events extends EventMap> = {
-  [K in keyof Events]?: Events[K] extends (...args: any[]) => any
+  [K in keyof Events]?: Events[K] extends (...args: unknown[]) => unknown
     ? (...args: Parameters<Events[K]>) => void
     : never;
 };
@@ -35,8 +35,7 @@ export const subscribeToChannel = (
   if (cbs) {
     let key: keyof cbs<SubscriptionEvents>;
     for (key in cbs) {
-      // The types are not being properly propagated in the callback
-      // @ts-expect-error
+      // @ts-expect-error The types are not being properly propagated in the callback
       sub.on(key, cbs[key]);
     }
   }

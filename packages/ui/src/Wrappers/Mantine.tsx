@@ -13,14 +13,22 @@ const MantineWrapper: React.FC<MantineWrapperProps> = ({ children }) => {
   );
 };
 
-export const withMantine = <T extends {}>(Component: React.FC<T>) => {
-  return (props: T) => {
+export const withMantine = <T extends Record<string, unknown>>(
+  Component: React.FC<T>
+) => {
+  const EnhancedComponent = (props: T) => {
     return (
       <MantineWrapper>
         <Component {...props} />
       </MantineWrapper>
     );
   };
+
+  EnhancedComponent.displayName = `withMantine(${
+    Component.displayName || Component.name
+  })`;
+
+  return EnhancedComponent;
 };
 
 export default MantineWrapper;
