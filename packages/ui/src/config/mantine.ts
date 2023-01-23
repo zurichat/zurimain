@@ -1,5 +1,4 @@
-import { MantineTheme } from "@mantine/core";
-// eslint-disable-next-line @typescript-eslint/ban-types
+import { MantineTheme } from "@mantine/core"
 export type DeepPartial<T> = T extends object ? { [P in keyof T]?: DeepPartial<T[P]> } : T;
 
 export const mantineConfig: DeepPartial<MantineTheme> = {
