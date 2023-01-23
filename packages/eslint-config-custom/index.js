@@ -16,7 +16,7 @@ module.exports = {
   ],
   plugins: ["react"],
   rules: {
-    "react/jsx-key": "off"
+    "react/prop-types": "off"
   },
   settings: {
     react: {
