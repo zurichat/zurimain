@@ -26,12 +26,11 @@ Adding a new page is simple
 
 - after creating the page directory and an `index.tsx` file while contains the default export of the page, go to `src/router/routes.tsx` to add your page route to the Router.
 
-```TypeScript
-
+```tsx
 export function getExternalRoutes(): RouteObject[] {
   return [
     { path: "/", element: <HomePage /> },
-    { path: "/help", element: <HelpPage /> },
+    { path: "/help", element: <HelpPage /> }
     // add new external routes here
   ];
 }
