@@ -1,12 +1,12 @@
-import { Layout } from "@zuri/ui";
 import { createBrowserRouter } from "react-router-dom";
-import { ErrorPage } from "../pages";
+import App from "../App";
+import ErrorPage from "../pages/error/error";
 import { getExternalRoutes } from "./routes";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout hideSideBar />,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: getExternalRoutes()
   }
