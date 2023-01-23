@@ -2,7 +2,9 @@ import {
   Box,
   Collapse,
   createStyles,
+  Flex,
   Group,
+  Image,
   Text,
   UnstyledButton
 } from "@mantine/core";
@@ -12,7 +14,7 @@ import {
   IconHash,
   TablerIcon
 } from "@tabler/icons";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 
 const useStyles = createStyles(theme => ({
   control: {
@@ -27,7 +29,7 @@ const useStyles = createStyles(theme => ({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
-          : theme.colors.gray[0],
+          : theme.colors.gray[1],
       color: theme.colorScheme === "dark" ? theme.white : theme.black
     }
   },
@@ -71,36 +73,70 @@ const useStyles = createStyles(theme => ({
   },
   chevron: {
     transition: "transform 200ms ease"
-  }
+  },
+  hash: {
+    color: "black",
+    marginRight: 8
+  },
+  hashActive: { color: "white" }
 }));
 
 interface PluginItemProps {
-  icon: TablerIcon;
+  icon?: TablerIcon;
   label: string;
   initiallyOpened?: boolean;
-  links?: { label: string; link: string }[];
+  links?: { label: string; link: string; image?: string }[];
 }
 
 const PluginItem: FC<PluginItemProps> = ({
-  icon:Icon,
+  icon: Icon,
   label,
   initiallyOpened,
   links
 }) => {
-  const { classes, theme } = useStyles();
+  const [active, setActive] = useState("");
+  const { classes, theme, cx } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map(link => (
     <Text<"a">
       component="a"
-      className={classes.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.label
+      })}
       href={link.link}
       key={link.label}
       pl="40px"
-      onClick={event => event.preventDefault()}
+      onClick={event => {
+        event.preventDefault();
+        setActive(link.label);
+      }}
     >
-      <IconHash size={12} color="black" /> {link.label}
+      {link.image ? (
+        <Flex align={"center"}>
+          <Image
+            mr={5}
+            height={25}
+            width={25}
+            radius="xs"
+            withPlaceholder
+            src={link.image}
+            alt="Random unsplash image"
+          />{" "}
+          {link.label}
+        </Flex>
+      ) : (
+        <Flex align={"center"}>
+          <IconHash
+            size={13}
+            className={cx(classes.hash, {
+              [classes.hashActive]: active === link.label
+            })}
+          />
+          {link.label}
+        </Flex>
+      )}
     </Text>
   ));
   return (

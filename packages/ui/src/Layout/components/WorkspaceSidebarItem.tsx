@@ -34,7 +34,7 @@ const useStyles = createStyles(theme => ({
     }
   },
   workspaceImage: {
-    border: "solid 2px black",
+    border: `solid 1px ${theme.colors.gray[3]}`,
     borderRadius: "5px",
     objectFit: "contain"
   }
@@ -69,16 +69,16 @@ const WorkspaceSidebarItem = (props: Props) => {
           [classes.mainLinkActive]: link.label === active
         })}
       >
-        {link.src && (
+        {link.src ? (
           <Image
             height={40}
             className={classes.workspaceImage}
             withPlaceholder
             src={link.src}
-            alt="Random unsplash image"
+            alt="Workspace Logo"
           />
-        )}
-        {link.icon && <link.icon stroke={1.5} />}
+        ) : null}
+        {link.icon ? <link.icon stroke={1.5} /> : null}
       </UnstyledButton>
     </Tooltip>
   );

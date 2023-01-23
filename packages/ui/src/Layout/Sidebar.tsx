@@ -5,7 +5,8 @@ import {
   Title,
   Box,
   ThemeIcon,
-  Divider
+  Divider,
+  Tooltip
 } from "@mantine/core";
 import {
   IconCalendarStats,
@@ -68,15 +69,32 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-const mockdata = {
-  label: "Channels",
-  icon: IconCalendarStats,
-  links: [
-    { label: "Upcoming releases", link: "/" },
-    { label: "Previous releases", link: "/" },
-    { label: "Releases schedule", link: "/" }
-  ]
-};
+const mockdata = [
+  {
+    label: "Channels",
+    links: [
+      { label: "General", link: "/" },
+      { label: "Announcements", link: "/" },
+      { label: "Chat Random", link: "/" }
+    ]
+  },
+  {
+    label: "Direct Messages",
+    links: [
+      { label: "Me", link: "/", image: "https://bit.ly/sage-adebayo" },
+      {
+        label: "Sage Adebayo",
+        link: "/",
+        image: "https://bit.ly/sage-adebayo"
+      },
+      {
+        label: "Releases schedule",
+        link: "/",
+        image: "https://bit.ly/sage-adebayo"
+      }
+    ]
+  }
+];
 
 const linksMockdata = [
   { label: "Thread", icon: IconMessageCircle },
@@ -91,7 +109,7 @@ export interface SidebarProps {
 }
 export const Sidebar: React.FC<SidebarProps> = props => {
   const { opened } = props;
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const [active, setActive] = useState("Releases");
   const [activeLink, setActiveLink] = useState("Settings");
 
@@ -119,9 +137,20 @@ export const Sidebar: React.FC<SidebarProps> = props => {
                   stroke={1.5}
                 />
               </Box>
-              <ThemeIcon className={classes.editicon} variant="light" size={30}>
-                <IconEdit size={18} />
-              </ThemeIcon>
+              <Tooltip
+                label={"New Message"}
+                position="bottom"
+                withArrow
+                transitionDuration={0}
+              >
+                <ThemeIcon
+                  className={classes.editicon}
+                  variant="light"
+                  size={30}
+                >
+                  <IconEdit size={18} />
+                </ThemeIcon>
+              </Tooltip>
             </Box>
           </Title>
           {/* Sidebar Items */}
@@ -135,7 +164,9 @@ export const Sidebar: React.FC<SidebarProps> = props => {
           ))}
           <Divider className={classes.divider} />
           {/* Plugins Section */}
-          <PluginItem {...mockdata} />
+          {mockdata.map((link, idx) => (
+            <PluginItem key={idx} label={link.label} links={link.links} />
+          ))}
         </div>
       </Navbar.Section>
     </Navbar>
