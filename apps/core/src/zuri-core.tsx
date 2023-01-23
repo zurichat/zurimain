@@ -1,3 +1,4 @@
+import { logger } from "@zuri/utilities";
 import React from "react";
 import ReactDOMClient from "react-dom/client";
 import singleSpaReact from "single-spa-react";
@@ -8,6 +9,7 @@ export const { bootstrap, mount, unmount } = singleSpaReact({
   ReactDOMClient,
   rootComponent,
   errorBoundary(err, info, props) {
+    logger.error({ err, info, props });
     // https://reactjs.org/docs/error-boundaries.html
     return <div>This renders when a catastrophic error occurs</div>;
   }

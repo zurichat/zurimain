@@ -6,13 +6,11 @@ import { withMantine } from "../Wrappers/Mantine";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
-interface LayoutProps {}
-
 /**
  * This layout expects to be wrapped in a react redux provider
  * The store is found in the zuri utilities export
  */
-export const Layout = withMantine<LayoutProps>(() => {
+export const Layout = withMantine(() => {
   const navigation = useNavigation();
   const theme = useMantineTheme();
 
