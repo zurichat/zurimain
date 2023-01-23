@@ -27,6 +27,7 @@ export const mantineConfig: Partial<MantineThemeOverride> = {
       "#21654F"
     ]
   },
-  primaryColor: "primary"
+  primaryColor: "primary",
+  black: "#3A3A3A"
 };
 export default mantineConfig;

@@ -8,13 +8,15 @@ import {
   Drawer,
   Group,
   Header as MantineHeader,
+  Image,
   Menu,
   NavLink,
   ScrollArea,
-  Text,
-  Title
+  Text
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
+import { Link } from "react-router-dom";
+import zuriChatLogo from "../assets/zurichat-logo.svg";
 
 const useStyles = createStyles(theme => ({
   innerLink: {
@@ -147,13 +149,22 @@ export const Header: React.FC<HeaderProps> = props => {
     );
   });
 
-  const appTitle = <Title>Zuri Chat</Title>;
+  const appTitle = (
+    <Group align="center" spacing={8}>
+      <Image src={zuriChatLogo} width={30} height={30} alt="ZuriChat Logo" />
+      <Text component="h1" size={22}>
+        Zuri Chat
+      </Text>
+    </Group>
+  );
 
   return (
     <Box>
       <MantineHeader height={80} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
-          {appTitle}
+          <Link to="/" className={classes.innerLink}>
+            {appTitle}
+          </Link>
 
           <Group sx={{ height: "100%" }} className={classes.hiddenMobile}>
             {items}
