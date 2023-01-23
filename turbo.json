@@ -6,10 +6,18 @@
       "outputs": ["dist/**"]
     },
     "lint": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalEnv": [
+    "BASE_API_URL",
+    "BASE_CLIENT_URL",
+    "WS_CONNECTION_URL",
+    "NODE_ENV",
+    "ENV_FILE"
+  ]
 }
