@@ -8,7 +8,7 @@ import {
   Anchor,
   Divider,
 } from '@mantine/core';
-import FormHeading from './components/FormHeading';
+import FormHeading from '../components/FormHeading';
 
 const useStyles = createStyles((theme) => ({
 
@@ -83,4 +83,4 @@ export const LoginPage: React.FC = () => {
   );
 }
 
-export default LoginPage
+export default LoginPage;

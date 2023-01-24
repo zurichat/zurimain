@@ -8,7 +8,7 @@ import {
   Divider,
   Flex
 } from '@mantine/core';
-import FormHeading from './components/FormHeading';
+import FormHeading from '../components/FormHeading';
 
 const useStyles = createStyles((theme) => ({
     loginPage: {

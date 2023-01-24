@@ -3,7 +3,7 @@ import App from "../App";
 import { ContactPage, ErrorPage } from "../pages";
 
 // Onboarding
-import LoginPage from "../pages/onboarding/LoginPage";
+import LoginPage from "../pages/onboarding/Login";
 import { Login } from "@zuri/ui";
 import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
 
