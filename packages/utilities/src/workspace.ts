@@ -1,4 +1,4 @@
-import { User } from "types";
+import { User } from "@zuri/types";
 
 /**
  * @param {string} userEmail email of the user to get
@@ -37,7 +37,7 @@ export const getWorkspaceUser = async (
  * @description uses the email to get the user's info in the current workspace from the local cache or the server
  */
 export const getCurrentWorkspaceUser = async (): Promise<User> => {
-  let userFromStorage = sessionStorage.getItem("user");
+  const userFromStorage = sessionStorage.getItem("user");
 
   if (!userFromStorage) throw Error("No user is available");
 
@@ -67,6 +67,9 @@ export const getWorkspaceUsers = async (
   token: string
 ): Promise<User[]> => {
   const workspaceUsers = {} as User[];
+
+  // this is just to ignore eslint errors till the actual logic is implemented
+  [workspaceName, token];
 
   return workspaceUsers;
 };
