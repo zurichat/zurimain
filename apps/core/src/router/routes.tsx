@@ -5,6 +5,7 @@ import { ContactPage, ErrorPage } from "../pages";
 // Onboarding
 import Login from "../pages/onboarding/Login";
 import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
+import LoginLayout from "../pages/onboarding/components/LoginLayout";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +25,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login />
+    element: <LoginLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <Login />
+      },
+      {
+        path: "workspace",
+        element: <WorkspaceLogin />
+      },
+    ]
   },
-  {
-    path: "/workspace-login",
-    element: <WorkspaceLogin />
-  }
+  
 ]);
 
 export default router;

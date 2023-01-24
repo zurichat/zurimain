@@ -2,13 +2,17 @@ import {
   Paper,
   createStyles,
   TextInput,
+  PasswordInput,
   Button,
+  Title,
   Text,
   Anchor,
   Divider,
   Flex
 } from '@mantine/core';
-import FormHeading from './components/FormHeading';
+import FormHeader from './FormHeader';
+import FormHeading from './FormHeading';
+import { Outlet } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
     loginPage: {
@@ -60,7 +64,7 @@ const useStyles = createStyles((theme) => ({
         // borderRight: `1px solid ${
         // theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[3]
         // }`,
-        maxWidth: '500px',
+        maxWidth: '480px',
         width: '100%',
         background: 'transparent',
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
@@ -79,18 +83,6 @@ const useStyles = createStyles((theme) => ({
         },
     },
 
-    title: {
-        // color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-        fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-        fontSize: '40px',
-        lineHeight: '50px',
-        fontWeight: 700,
-        color: '#1E2122',
-        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-            fontSize: '28px',
-        },
-    },
-
     logo: {
         color: theme.colorScheme === 'dark' ? theme.white : theme.black,
         width: 120,
@@ -103,58 +95,31 @@ const useStyles = createStyles((theme) => ({
         fontSize: '20px',
         fontWeight: 700,
         color: '#373B3D'
-    },
-
-    fullwidth: {
-        width: '100%'
-    },
-
-    urlField: {
-        width: '100%',
-        maxWidth: '270px',
-        backgroundColor: 'transparent'
     }
 }));
 
-const Login = () => {
+const LoginLayout = () => {
   const { classes } = useStyles();
   return (
-    <Paper className={classes.form} radius={0}>
-        <FormHeading
-            title='Sign in to your workspace'
-            subtitle='Enter your workplace'
-            boldSubtitle='Zurichat URL'
-        />
+    <div className={classes.loginPage}>
         <Flex
-            justify={'start'}
-            align={'center'}
-            gap={'10px'}
-            className={classes.fullwidth}
+            className={classes.wrapper}
+            justify="between"
+            align="center"
         >
-            <TextInput placeholder="name@workemail.com" size="md" autoComplete='false' classNames={{ input: classes.urlField}} />
-            <Text
-                weight={700}
-                size={20}
-                color='#373B3D'
+            <Flex 
+                className={classes.formContainer}
+                justify="center"
+                align="center"
             >
-                .zurichat.com
-            </Text>
+                <FormHeader />
+                <Outlet />  
+            </Flex>
+            <Paper className={classes.formImage}>
+            </Paper>
         </Flex>
-        <Button fullWidth mt="xl" size="md" bg={'#14466F'} mb={25} >
-            Continue
-        </Button>
-        <Text align="center" mt="md" color={'#373B3D'} weight={'400'} size={16} mb={25} >
-            Don’t know your workspace URL ?{' '}
-            <Anchor<'a'> href="#" weight={700} color={'#14466F'} onClick={(event) => event.preventDefault()}>
-                Find your workspace
-            </Anchor>
-        </Text>
-        <Divider my="xs" label="OR" labelPosition="center" color='#B5BEC1' classNames={{ label: classes.label }}/>
-        <Button fullWidth mt="xl" size="md" bg={'transparent'}variant='outline' color='#14466F' mb={25} >
-            Create A New Workspace
-        </Button>
-    </Paper>
+    </div>
   );
 }
 
-export default Login
+export default LoginLayout
