@@ -1,5 +1,10 @@
-import { createStyles, Image, Tooltip, UnstyledButton } from "@mantine/core";
-import { TablerIcon } from "@tabler/icons";
+import {
+  Avatar,
+  createStyles,
+  Tooltip,
+  UnstyledButton
+} from "@mantine/core";
+import { FC } from "react";
 
 const useStyles = createStyles(theme => ({
   mainLink: {
@@ -40,19 +45,20 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-type LinkType = {
+interface LinkType {
   label: string;
-  icon?: TablerIcon;
-  src?: string;
-};
+  src: string;
+}
 
-type Props = {
+interface WorkspaceSidebarItemProps {
   active: string;
   link: LinkType;
   setActive: Function;
-};
+}
 
-const WorkspaceSidebarItem = (props: Props) => {
+const WorkspaceSidebarItem: FC<WorkspaceSidebarItemProps> = (
+  props: WorkspaceSidebarItemProps
+) => {
   const { classes, cx } = useStyles();
   const { active, link, setActive } = props;
   return (
@@ -69,16 +75,12 @@ const WorkspaceSidebarItem = (props: Props) => {
           [classes.mainLinkActive]: link.label === active
         })}
       >
-        {link.src ? (
-          <Image
-            height={40}
-            className={classes.workspaceImage}
-            withPlaceholder
-            src={link.src}
-            alt="Workspace Logo"
-          />
-        ) : null}
-        {link.icon ? <link.icon stroke={1.5} /> : null}
+        <Avatar
+          size={40}
+          className={classes.workspaceImage}
+          src={link.src}
+          alt="Workspace Logo"
+        />
       </UnstyledButton>
     </Tooltip>
   );

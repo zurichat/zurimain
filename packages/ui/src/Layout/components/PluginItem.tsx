@@ -1,4 +1,5 @@
 import {
+  Accordion,
   Box,
   Collapse,
   createStyles,
@@ -13,19 +14,31 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconHash,
+  IconPhoto,
   TablerIcon
 } from "@tabler/icons";
 import { FC, useState } from "react";
 
 const useStyles = createStyles(theme => ({
-  control: {
+  pluginitem: { border: "none" },
+  content: {padding:0},
+  accordion: {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[7]
+        : theme.colors.secondary[4]
+  },
+  buttonText: {
     fontWeight: 500,
-    display: "block",
-    width: "100%",
-    padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-    fontSize: theme.fontSizes.sm,
-
+    fontSize: theme.fontSizes.sm
+  },
+  control: {
+    width: "100%",
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[7]
+        : theme.colors.secondary[4],
     "&:hover": {
       backgroundColor:
         theme.colorScheme === "dark"
@@ -72,9 +85,6 @@ const useStyles = createStyles(theme => ({
       color: theme.white
     }
   },
-  chevron: {
-    transition: "transform 200ms ease"
-  },
   hash: {
     color: "black",
     marginRight: 8
@@ -100,6 +110,8 @@ const PluginItem: FC<PluginItemProps> = ({
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
+  const getColor = (color: string) =>
+    theme.colors[color][theme.colorScheme === "dark" ? 5 : 7];
   const items = (hasLinks ? links : []).map(link => (
     <Text<"a">
       component="a"
@@ -152,31 +164,29 @@ const PluginItem: FC<PluginItemProps> = ({
     </Text>
   ));
   return (
-    <>
-      <UnstyledButton
-        onClick={() => setOpened(o => !o)}
-        className={classes.control}
-      >
-        <Group spacing={0}>
-          {hasLinks && (
-            <ChevronIcon
-              className={classes.chevron}
-              size={14}
-              stroke={1.5}
-              style={{
-                transform: opened
-                  ? `rotate(${theme.dir === "rtl" ? -90 : 90}deg)`
-                  : "none"
-              }}
-            />
-          )}
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box ml="xs">{label}</Box>
-          </Box>
-        </Group>
-      </UnstyledButton>
-      {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
-    </>
+    <Accordion
+      p={0}
+      variant="contained"
+      chevronPosition="left"
+      chevron={<IconChevronRight size={12} />}
+      classNames={classes}
+      styles={{
+        chevron: {
+          "&[data-rotate]": {
+            transform: "rotate(90deg)"
+          }, marginRight:"3px"
+        }
+      }}
+    >
+      <Accordion.Item value="photos" className={classes.pluginitem}>
+        <Accordion.Control h="35px" className={classes.control}>
+          <Text className={classes.buttonText}> {label}</Text>
+        </Accordion.Control>
+        <Accordion.Panel className={classes.accordion}>
+          {hasLinks ? <Box>{items}</Box> : null}
+        </Accordion.Panel>
+      </Accordion.Item>
+    </Accordion>
   );
 };
 
