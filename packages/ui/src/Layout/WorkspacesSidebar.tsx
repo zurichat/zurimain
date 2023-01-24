@@ -7,7 +7,7 @@ const useStyles = createStyles(theme => ({
     paddingTop: 10,
     flex: "0 0 60px",
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[4],
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -17,10 +17,6 @@ const useStyles = createStyles(theme => ({
   },
   chevrondown: {
     marginLeft: 5
-  },
-  divider: {
-    marginTop: 10,
-    marginBottom: 10
   },
   editicon: {
     borderRadius: "50%"

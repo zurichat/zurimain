@@ -17,6 +17,10 @@ import {
 import { IconChevronDown } from "@tabler/icons";
 
 const useStyles = createStyles(theme => ({
+  header:{background:
+    theme.colorScheme === "dark"
+      ? theme.colors.dark[8]
+      : theme.colors.secondary[4]},
   innerLink: {
     textDecoration: "none",
     color:
@@ -151,7 +155,7 @@ export const Header: React.FC<HeaderProps> = props => {
 
   return (
     <Box>
-      <MantineHeader height={60} px="md">
+      <MantineHeader className={classes.header} height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           {appTitle}
 

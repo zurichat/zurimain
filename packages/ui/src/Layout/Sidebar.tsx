@@ -30,31 +30,31 @@ const useStyles = createStyles(theme => ({
     paddingTop: 10,
     flex: "0 0 60px",
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[4],
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     borderRight: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[2]
     }`
   },
   main: {
     flex: 1,
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0]
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.secondary[4]
   },
   title: {
     boxSizing: "border-box",
     cursor: "pointer",
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[4],
     marginBottom: 5,
     padding: theme.spacing.md,
     paddingTop: 7,
     height: 45,
     borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[2]
     }`
   },
   chevrondown: {
@@ -62,7 +62,9 @@ const useStyles = createStyles(theme => ({
   },
   divider: {
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    borderColor:
+    theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[2]
   },
   editicon: {
     borderRadius: "50%"
@@ -145,7 +147,7 @@ export const Sidebar: React.FC<SidebarProps> = props => {
               >
                 <ThemeIcon
                   className={classes.editicon}
-                  variant="light"
+                  variant="filled"
                   size={30}
                 >
                   <IconEdit size={18} />

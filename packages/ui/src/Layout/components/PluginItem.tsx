@@ -5,6 +5,7 @@ import {
   Flex,
   Group,
   Image,
+  Indicator,
   Text,
   UnstyledButton
 } from "@mantine/core";
@@ -115,15 +116,26 @@ const PluginItem: FC<PluginItemProps> = ({
     >
       {link.image ? (
         <Flex align={"center"}>
-          <Image
-            mr={5}
-            height={25}
-            width={25}
-            radius="xs"
-            withPlaceholder
-            src={link.image}
-            alt="Random unsplash image"
-          />{" "}
+          <Indicator
+            mr={4}
+            dot
+            inline
+            size={10}
+            offset={4.5}
+            position="bottom-end"
+            color="green"
+            withBorder
+          >
+            <Image
+              mr={5}
+              height={25}
+              width={25}
+              radius="xs"
+              withPlaceholder
+              src={link.image}
+              alt="Random unsplash image"
+            />
+          </Indicator>{" "}
           {link.label}
         </Flex>
       ) : (
