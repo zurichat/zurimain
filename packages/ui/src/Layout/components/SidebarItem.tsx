@@ -1,6 +1,5 @@
 import { Box, createStyles } from "@mantine/core";
 import { TablerIcon } from "@tabler/icons";
-import { FC } from "react";
 
 const useStyles = createStyles(theme => ({
   link: {
@@ -54,7 +53,7 @@ interface SidebarItemProps {
   setActiveLink: Function;
 };
 
-const SidebarItem: FC<SidebarItemProps> = (props:SidebarItemProps) => {
+const SidebarItem: React.FC<SidebarItemProps> = (props:SidebarItemProps) => {
   const { classes, cx } = useStyles();
   const { activeLink, link, setActiveLink } = props;
   return (

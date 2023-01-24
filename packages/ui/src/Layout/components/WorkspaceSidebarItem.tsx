@@ -4,7 +4,6 @@ import {
   Tooltip,
   UnstyledButton
 } from "@mantine/core";
-import { FC } from "react";
 
 const useStyles = createStyles(theme => ({
   mainLink: {
@@ -56,7 +55,7 @@ interface WorkspaceSidebarItemProps {
   setActive: Function;
 }
 
-const WorkspaceSidebarItem: FC<WorkspaceSidebarItemProps> = (
+const WorkspaceSidebarItem: React.FC<WorkspaceSidebarItemProps> = (
   props: WorkspaceSidebarItemProps
 ) => {
   const { classes, cx } = useStyles();

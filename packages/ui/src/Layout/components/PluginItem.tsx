@@ -1,23 +1,18 @@
 import {
   Accordion,
   Box,
-  Collapse,
   createStyles,
   Flex,
-  Group,
   Image,
   Indicator,
   Text,
-  UnstyledButton
 } from "@mantine/core";
 import {
-  IconChevronLeft,
   IconChevronRight,
   IconHash,
-  IconPhoto,
   TablerIcon
 } from "@tabler/icons";
-import { FC, useState } from "react";
+import { useState } from "react";
 
 const useStyles = createStyles(theme => ({
   pluginitem: { border: "none" },
@@ -99,19 +94,14 @@ interface PluginItemProps {
   links?: { label: string; link: string; image?: string }[];
 }
 
-const PluginItem: FC<PluginItemProps> = ({
+const PluginItem: React.FC<PluginItemProps> = ({
   icon: Icon,
   label,
-  initiallyOpened,
   links
 }) => {
   const [active, setActive] = useState("");
-  const { classes, theme, cx } = useStyles();
+  const { classes, cx } = useStyles();
   const hasLinks = Array.isArray(links);
-  const [opened, setOpened] = useState(initiallyOpened || false);
-  const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
-  const getColor = (color: string) =>
-    theme.colors[color][theme.colorScheme === "dark" ? 5 : 7];
   const items = (hasLinks ? links : []).map(link => (
     <Text<"a">
       component="a"

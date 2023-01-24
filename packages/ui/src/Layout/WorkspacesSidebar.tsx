@@ -1,6 +1,5 @@
 import { createStyles, Tooltip, UnstyledButton } from "@mantine/core";
-import { IconPlus, TablerIcon } from "@tabler/icons";
-import { FC } from "react";
+import { IconPlus } from "@tabler/icons";
 import WorkspaceSidebarItem from "./components/WorkspaceSidebarItem";
 
 const useStyles = createStyles(theme => ({
@@ -8,14 +7,17 @@ const useStyles = createStyles(theme => ({
     paddingTop: 10,
     flex: "0 0 60px",
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[4],
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[7]
+        : theme.colors.secondary[4],
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     borderRight: `1px solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
     }`
-  }, mainLink: {
+  },
+  mainLink: {
     marginTop: 10,
     width: 44,
     height: 44,
@@ -34,10 +36,10 @@ const useStyles = createStyles(theme => ({
           ? theme.colors.dark[5]
           : theme.colors.primary[0]
     }
-  },
+  }
 }));
 
-const AddWorkSpaceButton:FC = () => {
+const AddWorkSpaceButton: React.FC = () => {
   const { classes, cx } = useStyles();
   return (
     <Tooltip
@@ -47,10 +49,8 @@ const AddWorkSpaceButton:FC = () => {
       transitionDuration={0}
       key={"Add Workspaces"}
     >
-      <UnstyledButton
-        className={cx(classes.mainLink)}
-      >
-       <IconPlus stroke={1.5} />
+      <UnstyledButton className={cx(classes.mainLink)}>
+        <IconPlus stroke={1.5} />
       </UnstyledButton>
     </Tooltip>
   );
@@ -61,15 +61,17 @@ const src =
 
 const mainLinksMockdata = [
   { label: "ZuriChat", src: src },
-  { label: "Abeg", src: src },
+  { label: "Abeg", src: src }
 ];
 
 interface WorkspacesSidebarProps {
   active: string;
   setActive: Function;
-};
+}
 
-const WorkspacesSidebar: FC<WorkspacesSidebarProps> = (props: WorkspacesSidebarProps) => {
+const WorkspacesSidebar: React.FC<WorkspacesSidebarProps> = (
+  props: WorkspacesSidebarProps
+) => {
   const { classes } = useStyles();
   const { active, setActive } = props;
 
@@ -83,7 +85,7 @@ const WorkspacesSidebar: FC<WorkspacesSidebarProps> = (props: WorkspacesSidebarP
           key={idx}
         />
       ))}
-      <AddWorkSpaceButton/>
+      <AddWorkSpaceButton />
     </div>
   );
 };
