@@ -1,6 +1,8 @@
-import { MantineThemeOverride } from "@mantine/core";
-
-import { Tuple, DefaultMantineColor } from "@mantine/core";
+import type {
+  Tuple,
+  DefaultMantineColor,
+  MantineThemeOverride
+} from "@mantine/core";
 
 type ExtendedCustomColors = "primary" | DefaultMantineColor;
 
@@ -12,6 +14,9 @@ declare module "@mantine/core" {
 
 export const mantineConfig: Partial<MantineThemeOverride> = {
   fontFamily: "Lato",
+  headings: {
+    fontFamily: "Lato"
+  },
   colorScheme: "light",
   colors: {
     primary: [
@@ -27,7 +32,6 @@ export const mantineConfig: Partial<MantineThemeOverride> = {
       "#21654F"
     ]
   },
-  primaryColor: "primary",
-  black: "#3A3A3A"
+  primaryColor: "primary"
 };
 export default mantineConfig;
