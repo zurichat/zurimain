@@ -3,9 +3,9 @@ import App from "../App";
 import { ContactPage, ErrorPage } from "../pages";
 
 // Onboarding
-import Login from "../pages/onboarding/Login";
+import LoginPage from "../pages/onboarding/LoginPage";
+import { Login } from "@zuri/ui";
 import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
-import LoginLayout from "../pages/onboarding/components/LoginLayout";
 
 const router = createBrowserRouter([
   {
@@ -24,20 +24,28 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path: "/login",
-    element: <LoginLayout />,
+    path: "login",
+    element: <Login />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <Login />
-      },
-      {
-        path: "workspace",
-        element: <WorkspaceLogin />
-      },
+        element: <LoginPage />
+      }
     ]
   },
+  {
+    path: "workspace",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <WorkspaceLogin />
+      }
+    ]
+  },
+
   
 ]);
 

@@ -27,7 +27,6 @@ const useStyles = createStyles((theme) => ({
     label: {
         fontSize: '20px',
         fontWeight: 700,
-        color: '#373B3D'
     },
 
     inputField: {
@@ -49,7 +48,7 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-const Login = () => {
+export const LoginPage: React.FC = () => {
   const { classes } = useStyles();
   const {
     form,
@@ -70,7 +69,7 @@ const Login = () => {
         <Button fullWidth mt="xl" size="md" bg={'#14466F'} mb={25} >
             Login
         </Button>
-        <Divider my="xs" label="OR" labelPosition="center" color='#B5BEC1' classNames={{ label: label }}/>
+        <Divider my="xs" label="OR" labelPosition="center" labelProps={{ color: '#373B3D' }} color='#B5BEC1' classNames={{ label: label }}/>
         <Button fullWidth mt="xl" size="md" variant='outline' color='#14466F' mb={25} className={ outlineBtn } >
             Login with Google
         </Button>
@@ -84,4 +83,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default LoginPage

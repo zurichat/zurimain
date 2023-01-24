@@ -112,7 +112,17 @@ const useStyles = createStyles((theme) => ({
     urlField: {
         width: '100%',
         maxWidth: '270px',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        color: '#14466F'
+    },
+
+    outlineBtn: {
+        border: '1px solid #14466F',
+        color: '#14466F'
+    },
+
+    link: {
+        color: '#14466F'
     }
 }));
 
@@ -145,12 +155,12 @@ const Login = () => {
         </Button>
         <Text align="center" mt="md" color={'#373B3D'} weight={'400'} size={16} mb={25} >
             Don’t know your workspace URL ?{' '}
-            <Anchor<'a'> href="#" weight={700} color={'#14466F'} onClick={(event) => event.preventDefault()}>
+            <Anchor<'a'> href="#" weight={700} color={'#14466F'} onClick={(event) => event.preventDefault()} className={ classes.link }>
                 Find your workspace
             </Anchor>
         </Text>
-        <Divider my="xs" label="OR" labelPosition="center" color='#B5BEC1' classNames={{ label: classes.label }}/>
-        <Button fullWidth mt="xl" size="md" bg={'transparent'}variant='outline' color='#14466F' mb={25} >
+        <Divider my="xs" label="OR" labelPosition="center" labelProps={{ color: '#373B3D' }} color='#B5BEC1' classNames={{ label: classes.label }}/>
+        <Button fullWidth mt="xl" size="md" color='#14466F' variant='outline' mb={25} className={ classes.outlineBtn } >
             Create A New Workspace
         </Button>
     </Paper>
