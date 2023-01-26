@@ -34,6 +34,7 @@ export const Layout = withMantine(() => {
         main: {
           paddingLeft: 0,
           paddingRight: 0,
+          paddingBottom: 0,
           overflowX: "hidden",
           background:
             theme.colorScheme === "dark"

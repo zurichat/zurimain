@@ -21,6 +21,7 @@ import useImages from "./utils/useImages";
 export default function HomePage() {
   const dispatch = useAppDispatch();
   dispatch(uiSliceActions.setSidebarVisibility(false));
+  dispatch(uiSliceActions.setFooterVisibility(true));
 
   const { classes } = useStyles();
   const { hero0, hero1, hero2, hero3, hero4, hero5, hero6, ...companies } =
