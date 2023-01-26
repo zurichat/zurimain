@@ -62,7 +62,6 @@ export const Layout = withMantine(() => {
         )
       }
       navbar={sideBarVisible ? <Sidebar opened={drawerOpened} /> : <></>}
-      footer={<Footer height={100}>hello world</Footer>}
     >
       {navigation.state === "loading" ? (
         <Center style={{ height: "100%" }}>

@@ -17,6 +17,7 @@ import { IconArrowRight } from "@tabler/icons";
 import { uiSliceActions, useAppDispatch } from "@zuri/utilities";
 import { Link } from "react-router-dom";
 import HeroContainer from "./components/HeroContainer";
+import SubscriptionForm from "./components/SubscriptionForm";
 import useImages from "./utils/useImages";
 
 export default function HomePage() {
@@ -193,14 +194,7 @@ export default function HomePage() {
             latest news and special deals on Zuri Chat
           </Text>
           <Space h={40} />
-          <Group>
-            <TextInput
-              size="lg"
-              placeholder="Ex: jazeelandteam@yes.com"
-              style={{ flexGrow: 1 }}
-            />
-            <Button size="lg">Subscribe</Button>
-          </Group>
+          <SubscriptionForm />
         </div>
       </HeroContainer>
     </>
