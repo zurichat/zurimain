@@ -10,8 +10,8 @@ export default function HeroContainer(props: HeroContainerProps) {
   return (
     <Container size={1240} className={classes.wrapper}>
       <Grid align="center" gutter={56}>
-        <Grid.Col span={6}>{props.children[0]}</Grid.Col>
-        <Grid.Col span={6}>{props.children[1]}</Grid.Col>
+        <Grid.Col md={6}>{props.children[0]}</Grid.Col>
+        <Grid.Col md={6}>{props.children[1]}</Grid.Col>
       </Grid>
     </Container>
   );
@@ -19,8 +19,8 @@ export default function HeroContainer(props: HeroContainerProps) {
 
 const useStyles = createStyles(theme => ({
   wrapper: {
-    paddingTop: 100,
-    paddingBottom: 100,
+    paddingTop: 80,
+    paddingBottom: 80,
     color: theme.colors.dark[9]
   }
 }));

@@ -1,4 +1,10 @@
-import { AppShell, Center, Loader, useMantineTheme } from "@mantine/core";
+import {
+  AppShell,
+  Center,
+  Footer,
+  Loader,
+  useMantineTheme
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useAppSelector } from "@zuri/utilities";
 import { Outlet, useNavigation } from "react-router-dom";
@@ -28,6 +34,9 @@ export const Layout = withMantine(() => {
     <AppShell
       styles={{
         main: {
+          paddingLeft: 0,
+          paddingRight: 0,
+          overflowX: "hidden",
           background:
             theme.colorScheme === "dark"
               ? theme.colors.dark[8]
@@ -53,6 +62,7 @@ export const Layout = withMantine(() => {
         )
       }
       navbar={sideBarVisible ? <Sidebar opened={drawerOpened} /> : <></>}
+      footer={<Footer height={100}>hello world</Footer>}
     >
       {navigation.state === "loading" ? (
         <Center style={{ height: "100%" }}>
