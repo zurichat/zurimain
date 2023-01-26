@@ -1,5 +1,4 @@
-import { MantineThemeOverride } from "@mantine/core";
-import { Tuple, DefaultMantineColor } from '@mantine/core';
+import { MantineThemeOverride, Tuple, DefaultMantineColor } from "@mantine/core";
 
 type ExtendedCustomColors = 'primary' | 'secondary' | DefaultMantineColor;
 

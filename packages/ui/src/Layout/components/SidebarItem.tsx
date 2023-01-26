@@ -45,13 +45,13 @@ const useStyles = createStyles(theme => ({
 interface LinkType {
   label: string;
   icon: TablerIcon;
-};
+}
 
 interface SidebarItemProps {
   activeLink: string;
   link: LinkType;
   setActiveLink: (label: string) => void;
-};
+}
 
 const SidebarItem: React.FC<SidebarItemProps> = (props:SidebarItemProps) => {
   const { classes, cx } = useStyles();

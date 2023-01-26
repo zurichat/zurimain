@@ -4,11 +4,10 @@ import {
   Box,
   createStyles,
   Flex,
-  Image,
   Indicator,
   Text
 } from "@mantine/core";
-import { IconChevronRight, IconHash, TablerIcon } from "@tabler/icons";
+import { IconHash, TablerIcon } from "@tabler/icons";
 import { useState } from "react";
 
 const useStyles = createStyles(theme => ({
@@ -99,7 +98,6 @@ interface PluginItemProps {
 }
 
 const PluginItem: React.FC<PluginItemProps> = ({
-  icon: Icon,
   label,
   links
 }) => {
