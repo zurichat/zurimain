@@ -1,10 +1,4 @@
-import {
-  AppShell,
-  Center,
-  Footer,
-  Loader,
-  useMantineTheme
-} from "@mantine/core";
+import { AppShell, Center, Loader, useMantineTheme } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useAppSelector } from "@zuri/utilities";
 import { Outlet, useNavigation } from "react-router-dom";

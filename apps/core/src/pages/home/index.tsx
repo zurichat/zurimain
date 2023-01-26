@@ -6,11 +6,9 @@ import {
   Grid,
   Group,
   Image,
-  Input,
   Space,
   Stack,
   Text,
-  TextInput,
   Title
 } from "@mantine/core";
 import { IconArrowRight } from "@tabler/icons";
