@@ -22,7 +22,7 @@ export function BrandAvatar(props: BrandAvatarProps): JSX.Element {
         <Image src={zuriChatLogo} width={30} height={30} alt="ZuriChat Logo" />
       )}
       {props?.hideName ? null : (
-        <Text component="h1" size={22}>
+        <Text component="h1" size={22} style={{ margin: 0 }}>
           Zuri Chat
         </Text>
       )}
