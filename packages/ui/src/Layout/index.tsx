@@ -3,6 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { useAppSelector } from "@zuri/utilities";
 import { Outlet, useNavigation } from "react-router-dom";
 import { withMantine } from "../Wrappers/Mantine";
+import { Footer } from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -14,12 +15,15 @@ export const Layout = withMantine(() => {
   const navigation = useNavigation();
   const theme = useMantineTheme();
 
-  const { headerVisible, sideBarVisible } = useAppSelector(({ ui }) => {
-    return {
-      headerVisible: ui.headerVisible,
-      sideBarVisible: ui.sideBarVisible
-    };
-  });
+  const { headerVisible, sideBarVisible, footerVisible } = useAppSelector(
+    ({ ui }) => {
+      return {
+        headerVisible: ui.headerVisible,
+        sideBarVisible: ui.sideBarVisible,
+        footerVisible: ui.footerVisible
+      };
+    }
+  );
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
@@ -62,7 +66,10 @@ export const Layout = withMantine(() => {
           <Loader size="xl" />
         </Center>
       ) : (
-        <Outlet />
+        <>
+          <Outlet />
+          {footerVisible ? <Footer /> : <></>}
+        </>
       )}
     </AppShell>
   );

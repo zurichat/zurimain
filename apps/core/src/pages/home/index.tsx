@@ -159,7 +159,7 @@ export default function HomePage() {
         <Image src={hero4.src} alt={hero4.alt} />
       </HeroContainer>
 
-      {/* green section */}
+      {/* sixth hero - green section */}
       <Box className={classes.greenSection}>
         <Container size={1240}>
           <Grid columns={13} align="center" gutter={56}>
