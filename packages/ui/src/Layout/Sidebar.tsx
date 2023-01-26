@@ -73,6 +73,7 @@ const useStyles = createStyles(theme => ({
 
 const mockdata = [
   {
+    id:1,
     label: "Channels",
     links: [
       { label: "General", link: "/" },
@@ -81,6 +82,7 @@ const mockdata = [
     ]
   },
   {
+    id:2,
     label: "Direct Messages",
     links: [
       { label: "Me", link: "/", image: "https://bit.ly/sage-adebayo" },
@@ -98,12 +100,12 @@ const mockdata = [
   }
 ];
 
-const linksMockdata = [
-  { label: "Thread", icon: IconMessageCircle },
-  { label: "AllDMs", icon: IconMessages },
-  { label: "Drafts", icon: IconNotes },
-  { label: "Files", icon: IconFileDescription },
-  { label: "Plugins", icon: IconGridDots }
+const sideBarItemsData = [
+  { id:1, label: "Thread", icon: IconMessageCircle },
+  { id:2, label: "AllDMs", icon: IconMessages },
+  { id:3, label: "Drafts", icon: IconNotes },
+  { id:4, label: "Files", icon: IconFileDescription },
+  { id:5, label: "Plugins", icon: IconGridDots }
 ];
 
 export interface SidebarProps {
@@ -156,18 +158,18 @@ export const Sidebar: React.FC<SidebarProps> = props => {
             </Box>
           </Title>
           {/* Sidebar Items */}
-          {linksMockdata.map((link, idx) => (
+          {sideBarItemsData.map((link) => (
             <SidebarItem
               activeLink={activeLink}
               setActiveLink={setActiveLink}
               link={link}
-              key={idx}
+              key={link.id}
             />
           ))}
           <Divider className={classes.divider} />
           {/* Plugins Section */}
-          {mockdata.map((link, idx) => (
-            <PluginItem key={idx} label={link.label} links={link.links} />
+          {mockdata.map((link) => (
+            <PluginItem key={link.id} label={link.label} links={link.links} />
           ))}
         </div>
       </Navbar.Section>
