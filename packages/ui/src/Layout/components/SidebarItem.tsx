@@ -50,7 +50,7 @@ interface LinkType {
 interface SidebarItemProps {
   activeLink: string;
   link: LinkType;
-  setActiveLink: Function;
+  setActiveLink: (label: string) => void;
 };
 
 const SidebarItem: React.FC<SidebarItemProps> = (props:SidebarItemProps) => {

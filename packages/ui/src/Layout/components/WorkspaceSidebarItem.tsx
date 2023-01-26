@@ -45,6 +45,7 @@ const useStyles = createStyles(theme => ({
 }));
 
 interface LinkType {
+  id: number;
   label: string;
   src: string;
 }
@@ -52,7 +53,7 @@ interface LinkType {
 interface WorkspaceSidebarItemProps {
   active: string;
   link: LinkType;
-  setActive: Function;
+  setActive:  (label: string) => void;
 }
 
 const WorkspaceSidebarItem: React.FC<WorkspaceSidebarItemProps> = (

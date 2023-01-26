@@ -60,13 +60,13 @@ const src =
   "https://images.unsplash.com/photo-1511216335778-7cb8f49fa7a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80";
 
 const mainLinksMockdata = [
-  { label: "ZuriChat", src: src },
-  { label: "Abeg", src: src }
+  { label: "ZuriChat", src: src, id: 1 },
+  { label: "Abeg", src: src, id: 2 }
 ];
 
 interface WorkspacesSidebarProps {
   active: string;
-  setActive: Function;
+  setActive:  (label: string) => void;
 }
 
 const WorkspacesSidebar: React.FC<WorkspacesSidebarProps> = (
@@ -77,12 +77,12 @@ const WorkspacesSidebar: React.FC<WorkspacesSidebarProps> = (
 
   return (
     <div className={classes.aside}>
-      {mainLinksMockdata.map((link, idx) => (
+      {mainLinksMockdata.map((link) => (
         <WorkspaceSidebarItem
           active={active}
           setActive={setActive}
           link={link}
-          key={idx}
+          key={link.id}
         />
       ))}
       <AddWorkSpaceButton />

@@ -1,22 +1,26 @@
 import {
   Accordion,
+  Avatar,
   Box,
   createStyles,
   Flex,
   Image,
   Indicator,
-  Text,
+  Text
 } from "@mantine/core";
-import {
-  IconChevronRight,
-  IconHash,
-  TablerIcon
-} from "@tabler/icons";
+import { IconChevronRight, IconHash, TablerIcon } from "@tabler/icons";
 import { useState } from "react";
 
 const useStyles = createStyles(theme => ({
   pluginitem: { border: "none" },
-  content: {padding:0},
+  content: { padding: 0 },
+  chevron: {
+    transform: "rotate(-90deg)",
+    "&[data-rotate]": {
+      transform: "rotate(0deg)"
+    },
+    marginRight: "3px"
+  },
   accordion: {
     backgroundColor:
       theme.colorScheme === "dark"
@@ -84,7 +88,7 @@ const useStyles = createStyles(theme => ({
     color: "black",
     marginRight: 8
   },
-  hashActive: { color: "white" }
+  hashActive: { color: "white" },
 }));
 
 interface PluginItemProps {
@@ -100,7 +104,7 @@ const PluginItem: React.FC<PluginItemProps> = ({
   links
 }) => {
   const [active, setActive] = useState("");
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const items = (hasLinks ? links : []).map(link => (
     <Text<"a">
@@ -128,14 +132,13 @@ const PluginItem: React.FC<PluginItemProps> = ({
             color="green"
             withBorder
           >
-            <Image
+            <Avatar
               mr={5}
-              height={25}
-              width={25}
+              size={25}
               radius="xs"
-              withPlaceholder
-              src={link.image}
-              alt="Random unsplash image"
+              src={link.image ?? null}
+              color={theme.colors.primary[9]}
+              alt="Direct message avatar"
             />
           </Indicator>{" "}
           {link.label}
@@ -158,15 +161,7 @@ const PluginItem: React.FC<PluginItemProps> = ({
       p={0}
       variant="contained"
       chevronPosition="left"
-      chevron={<IconChevronRight size={12} />}
       classNames={classes}
-      styles={{
-        chevron: {
-          "&[data-rotate]": {
-            transform: "rotate(90deg)"
-          }, marginRight:"3px"
-        }
-      }}
     >
       <Accordion.Item value="photos" className={classes.pluginitem}>
         <Accordion.Control h="35px" className={classes.control}>
