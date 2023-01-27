@@ -4,7 +4,6 @@ import {
   Container,
   createStyles,
   Grid,
-  Group,
   Image,
   Space,
   Stack,
@@ -48,17 +47,17 @@ export default function HomePage() {
       <Space h={28} />
 
       {/* band - trusted companies */}
-      <Stack align="center" spacing={48}>
+      <Stack align="center" spacing={48} className={classes.bandSection}>
         <Text weight={700} className={classes.text}>
           Trusted by top companies worldwide
         </Text>
-        <Group grow position="apart" spacing={65}>
+        <div className={classes.bandImages}>
           {Object.values(companies).map(image => (
-            <Box key={image.src} sx={{ maxHeight: "100%" }}>
+            <Box key={image.src} sx={{ flexGrow: 1, flexShrink: 0 }}>
               <Image src={image.src} alt={image.alt} />
             </Box>
           ))}
-        </Group>
+        </div>
       </Stack>
 
       {/* second hero */}
@@ -88,7 +87,7 @@ export default function HomePage() {
       </HeroContainer>
 
       {/* third hero */}
-      <HeroContainer>
+      <HeroContainer reverseOnXs>
         <div>
           <Text size={20}>Remote Education</Text>
           <Title className={classes.smallerTitle}>Learn on the Go</Title>
@@ -137,7 +136,7 @@ export default function HomePage() {
       </HeroContainer>
 
       {/* fifth hero */}
-      <HeroContainer>
+      <HeroContainer reverseOnXs>
         <div>
           <Text size={20}>Advanced Search</Text>
           <Title className={classes.smallerTitle}>
@@ -182,7 +181,7 @@ export default function HomePage() {
       </Box>
 
       {/* seventh hero */}
-      <HeroContainer>
+      <HeroContainer className={classes.lastHero}>
         <Image src={hero6.src} alt={hero6.alt} />
         <div>
           <Title className={classes.smallerTitle}>
@@ -217,7 +216,7 @@ const useStyles = createStyles(theme => ({
   },
   text: {
     fontSize: 24,
-    color: theme.colors.dark[7]
+    color: theme.colors.gray[8]
   },
   linkButton: {
     paddingLeft: 0,
@@ -225,6 +224,29 @@ const useStyles = createStyles(theme => ({
     "&:hover": {
       textDecoration: "underline",
       background: "inherit"
+    }
+  },
+  bandSection: {
+    paddingLeft: 16,
+    paddingRight: 16,
+    "& .mantine-Text-root": {
+      fontSize: 16
+    },
+    [`@media screen and (max-width: ${theme.breakpoints.md}px)`]: {
+      gap: 32,
+      marginTop: 32
+    }
+  },
+  bandImages: {
+    display: "flex",
+    alignItems: "center",
+    gap: 65,
+    [`@media screen and (max-width: ${theme.breakpoints.md}px)`]: {
+      height: 42,
+      gap: 16
+    },
+    "& img": {
+      height: "100%"
     }
   },
   greenSection: {
@@ -243,7 +265,18 @@ const useStyles = createStyles(theme => ({
     },
     "& img": {
       position: "absolute",
-      top: 100
+      top: 100,
+      [`@media screen and (max-width: ${theme.breakpoints.md}px)`]: {
+        display: "none"
+      }
+    },
+    [`@media screen and (max-width: ${theme.breakpoints.md}px)`]: {
+      marginTop: 50,
+      paddingTop: 70,
+      paddingBottom: 70
     }
+  },
+  lastHero: {
+    marginBottom: 70
   }
 }));

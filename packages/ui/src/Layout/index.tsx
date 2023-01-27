@@ -42,7 +42,7 @@ export const Layout = withMantine(() => {
               : theme.colors.white
         }
       }}
-      navbarOffsetBreakpoint="sm"
+      navbarOffsetBreakpoint={0}
       header={
         headerVisible ? (
           <Header
