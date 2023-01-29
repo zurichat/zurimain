@@ -25,7 +25,7 @@ export default function SubscriptionForm() {
       setError(true);
       return;
     }
-    // TODO - make POST req to /external/subscribe
+    // TODO - make POST request to /external/subscribe
     setError(false);
     setModalOpened(true);
     setEmail("");
