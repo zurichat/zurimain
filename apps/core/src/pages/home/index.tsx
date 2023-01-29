@@ -4,12 +4,14 @@ import {
   Container,
   createStyles,
   Grid,
+  Group,
   Image,
   Space,
   Stack,
   Text,
   Title
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { IconArrowRight } from "@tabler/icons";
 import { uiSliceActions, useAppDispatch } from "@zuri/utilities";
 import { Link } from "react-router-dom";
@@ -23,6 +25,8 @@ export default function HomePage() {
   dispatch(uiSliceActions.setFooterVisibility(true));
 
   const { classes } = useStyles();
+  const isSm = useMediaQuery("(max-width: 600px)");
+  const isMd = useMediaQuery("(max-width: 1000px)");
   const { hero0, hero1, hero2, hero3, hero4, hero5, hero6, ...companies } =
     useImages();
 
@@ -48,16 +52,32 @@ export default function HomePage() {
 
       {/* band - trusted companies */}
       <Stack align="center" spacing={48} className={classes.bandSection}>
-        <Text weight={700} className={classes.text}>
+        <Text align="center" weight={700} className={classes.text}>
           Trusted by top companies worldwide
         </Text>
-        <div className={classes.bandImages}>
-          {Object.values(companies).map(image => (
-            <Box key={image.src} sx={{ flexGrow: 1, flexShrink: 0 }}>
-              <Image src={image.src} alt={image.alt} />
-            </Box>
-          ))}
-        </div>
+        <Group noWrap grow align="center" position="apart" spacing={32}>
+          {isSm
+            ? Object.values(companies)
+                .slice(0, 3)
+                .map(image => (
+                  <Box key={image.src} sx={{ maxHeight: 60 }}>
+                    <Image src={image.src} alt={image.alt} />
+                  </Box>
+                ))
+            : isMd
+            ? Object.values(companies)
+                .slice(0, 4)
+                .map(image => (
+                  <Box key={image.src} sx={{ maxHeight: 60 }}>
+                    <Image src={image.src} alt={image.alt} />
+                  </Box>
+                ))
+            : Object.values(companies).map(image => (
+                <Box key={image.src} sx={{ maxHeight: 60 }}>
+                  <Image src={image.src} alt={image.alt} />
+                </Box>
+              ))}
+        </Group>
       </Stack>
 
       {/* second hero */}
@@ -230,7 +250,7 @@ const useStyles = createStyles(theme => ({
     paddingLeft: 16,
     paddingRight: 16,
     "& .mantine-Text-root": {
-      fontSize: 16
+      fontSize: 18
     },
     [`@media screen and (max-width: ${theme.breakpoints.md}px)`]: {
       gap: 32,
