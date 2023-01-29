@@ -37,9 +37,7 @@ export const Layout = withMantine(() => {
           paddingBottom: 0,
           overflowX: "hidden",
           background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.white
+            theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white
         }
       }}
       navbarOffsetBreakpoint={0}
