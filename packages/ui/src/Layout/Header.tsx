@@ -18,12 +18,6 @@ import { Link } from "react-router-dom";
 import { BrandAvatar } from "../BrandAvatar";
 
 const useStyles = createStyles(theme => ({
-  header: {
-    background:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[8]
-        : theme.colors.secondary[4]
-  },
   innerLink: {
     textDecoration: "none",
     color:
@@ -156,7 +150,7 @@ export const Header: React.FC<HeaderProps> = props => {
 
   return (
     <Box>
-      <MantineHeader className={classes.header} height={80} px="md">
+      <MantineHeader height={80} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           <Link to="/" className={classes.innerLink}>
             <BrandAvatar />
