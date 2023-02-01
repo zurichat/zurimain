@@ -21,7 +21,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-const FormHeading: React.FC<Props> = ({ title, subtitle, boldSubtitle }) => {
+const FormTitle: React.FC<Props> = ({ title, subtitle, boldSubtitle }) => {
     const { classes } = useStyles();
   return (
     <div>
@@ -42,4 +42,4 @@ const FormHeading: React.FC<Props> = ({ title, subtitle, boldSubtitle }) => {
   )
 }
 
-export default FormHeading
+export default FormTitle

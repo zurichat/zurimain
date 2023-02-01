@@ -8,7 +8,7 @@ import {
   Divider,
   Flex
 } from '@mantine/core';
-import FormHeading from '../components/FormHeading';
+import FormTitle from '../../components/FormTitle';
 
 const useStyles = createStyles((theme) => ({
     loginPage: {
@@ -126,11 +126,11 @@ const useStyles = createStyles((theme) => ({
     }
 }));
 
-const Login = () => {
+export const WorkspaceLogin = () => {
   const { classes } = useStyles();
   return (
     <Paper className={classes.form} radius={0}>
-        <FormHeading
+        <FormTitle
             title='Sign in to your workspace'
             subtitle='Enter your workplace'
             boldSubtitle='Zurichat URL'
@@ -167,4 +167,4 @@ const Login = () => {
   );
 }
 
-export default Login
+export default WorkspaceLogin

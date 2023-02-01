@@ -3,9 +3,9 @@ import {
   createStyles,
   Flex
 } from '@mantine/core';
-import FormHeader from './FormHeader';
+import FormHeader from '../components/FormHeader';
 import { Outlet } from 'react-router-dom';
-import { withMantine } from '../Wrappers/Mantine';
+import { withMantine } from '../../../Wrappers/Mantine';
 
 const useStyles = createStyles((theme) => ({
     pageContainer: {
@@ -41,7 +41,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export const Login: React.FC = withMantine(() => {
+export const LoginLayout: React.FC = withMantine(() => {
   const { classes } = useStyles();
   return (
     <div className={classes.pageContainer}>
@@ -65,4 +65,4 @@ export const Login: React.FC = withMantine(() => {
   );
 })
 
-export default Login;
+export default LoginLayout;

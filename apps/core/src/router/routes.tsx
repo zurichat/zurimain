@@ -3,8 +3,8 @@ import App from "../App";
 import { ContactPage, ErrorPage } from "../pages";
 
 // Onboarding
-import LoginPage from "../pages/onboarding/Login";
-import { Login } from "@zuri/ui";
+import LoginPage from "../pages/onboarding/LoginPage";
+import { LoginLayout } from "@zuri/ui";
 import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
 
 const router = createBrowserRouter([
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <Login />,
+    element: <LoginLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   },
   {
     path: "workspace",
-    element: <Login />,
+    element: <LoginLayout />,
     errorElement: <ErrorPage />,
     children: [
       {

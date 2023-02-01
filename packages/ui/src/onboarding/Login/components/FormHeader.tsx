@@ -3,7 +3,7 @@ import {
   Text,
   Image
 } from '@mantine/core';
-import Logo from './assets/Zurilogo.svg';
+import Logo from './../assets/Zurilogo.svg';
 
 const useStyles = createStyles((theme) => ({
     formHeader: {

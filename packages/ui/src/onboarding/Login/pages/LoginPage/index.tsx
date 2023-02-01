@@ -7,8 +7,15 @@ import {
   Text,
   Anchor,
   Divider,
+  Alert,
 } from '@mantine/core';
-import FormHeading from '../components/FormHeading';
+import { useForm } from '@mantine/form';
+import FormTitle from '../../components/FormTitle';
+
+interface FormInput {
+    name: string;
+    email: string;
+}
 
 const useStyles = createStyles((theme) => ({
 
@@ -58,17 +65,50 @@ export const LoginPage: React.FC = () => {
     outlineBtn,
     link
   } = classes
+
+  const LoginForm = useForm({
+    initialValues: {
+        name: '',
+        email: ''
+    },
+
+    validate: {
+        name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+        email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+    },
+  })
+
+  const handleSubmit = LoginForm.onSubmit(
+    console.log(LoginForm.values)
+  )
   return (
     <Paper className={form} radius={0}>
-        <FormHeading
+        <FormTitle
             title='Welcome back'
         />
-        <TextInput placeholder="name@workemail.com" size="md" mb={20} autoComplete='false' classNames={{ input: inputField}} />
-        <PasswordInput placeholder="Enter password" mt="md" size="md" mb={20} autoComplete='false' classNames={{ input: classes.inputField, visibilityToggle: passwordIcon }} />
-        <Text align="right" mb={20} size={12} color={'#626769'} >Forgot Password</Text>
-        <Button fullWidth mt="xl" size="md" bg={'#14466F'} mb={25} >
-            Login
-        </Button>
+        <form onSubmit={handleSubmit}>
+            <TextInput
+                placeholder="name@workemail.com"
+                size="md"
+                mb={20}
+                autoComplete='false'
+                classNames={{ input: inputField}}
+                {...LoginForm.getInputProps('name')}
+            />
+            <PasswordInput
+                placeholder="Enter password"
+                mt="md"
+                size="md"
+                mb={20}
+                autoComplete='false'
+                classNames={{ input: classes.inputField, visibilityToggle: passwordIcon }}
+                {...LoginForm.getInputProps('email')}
+            />
+            <Text align="right" mb={20} size={12} color={'#626769'} >Forgot Password</Text>
+            <Button fullWidth mt="xl" size="md" bg={'#14466F'} mb={25} >
+                Login
+            </Button>
+        </form>
         <Divider my="xs" label="OR" labelPosition="center" labelProps={{ color: '#373B3D' }} color='#B5BEC1' classNames={{ label: label }}/>
         <Button fullWidth mt="xl" size="md" variant='outline' color='#14466F' mb={25} className={ outlineBtn } >
             Login with Google
