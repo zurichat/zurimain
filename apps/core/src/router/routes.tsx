@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { ContactPage, ErrorPage } from "../pages";
+import PrivacyPage from "../pages/privacy-policy"
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPage />
       }
     ]
   }
