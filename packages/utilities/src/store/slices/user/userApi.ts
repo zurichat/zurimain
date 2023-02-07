@@ -1,8 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setUser } from './../store/slices/user/slice';
+import { userSliceActions } from './slice';
 import { User } from '@zuri/types';
 
-const BASE_URL = 'https//api.zuri.chat';
+const BASE_URL = 'https://api.zuri.chat';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -14,7 +14,7 @@ export const userApi = createApi({
     getMe: builder.query<User, null>({
       query() {
         return {
-          url: 'me',
+          url: '/',
           credentials: 'include',
         };
       },
@@ -23,9 +23,12 @@ export const userApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(setUser(data));
-        } catch (error) { return }
+          dispatch(userSliceActions.setUser(data));
+        } catch (error) {
+            console.error(error)
+        }
       },
     }),
   }),
 });
+

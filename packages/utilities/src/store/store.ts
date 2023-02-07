@@ -6,9 +6,8 @@ import {
 } from "react-redux";
 import uiReducer from "./slices/ui/slice";
 import userReducer from "./slices/user/slice";
-import { authApi } from "../services/authApi";
-import { userApi } from "../services/userAPi";
-
+import { authApi } from "./slices/user/authApi";
+import { userApi } from "./slices/user/userApi";
 
 /**
  * This plugin provides a way to subscribe to a shared state and access things like user information
@@ -41,10 +40,10 @@ import { userApi } from "../services/userAPi";
  */
 export const store = configureStore({
   reducer: {
-    user: userReducer,
-    ui: uiReducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
+    user: userReducer,
+    ui: uiReducer
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>

@@ -8,7 +8,8 @@ export interface User {
   status: number;
   time_zone: string;
   created_at: string;
-  update_at: string;
+  updated_at: string;
+  token: string;
 }
 
 export default User;

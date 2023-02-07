@@ -4,6 +4,7 @@ import { ContactPage, ErrorPage } from "../pages";
 
 // Onboarding
 import LoginPage from "../pages/onboarding/LoginPage";
+import SignUpPage from "../pages/onboarding/SignUpPage";
 import { LoginLayout } from "@zuri/ui";
 import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
 
@@ -31,6 +32,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <LoginPage />
+      }
+    ]
+  },
+  {
+    path: "signup",
+    element: <LoginLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <SignUpPage />
       }
     ]
   },

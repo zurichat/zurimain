@@ -7,15 +7,10 @@ import {
   Text,
   Anchor,
   Divider,
-  Alert,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useLoginUserMutation } from '@zuri/utilities';
 import FormTitle from '../../components/FormTitle';
-
-interface FormInput {
-    name: string;
-    email: string;
-}
 
 const useStyles = createStyles((theme) => ({
 
@@ -56,6 +51,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export const LoginPage: React.FC = () => {
+
   const { classes } = useStyles();
   const {
     form,
@@ -68,32 +64,42 @@ export const LoginPage: React.FC = () => {
 
   const LoginForm = useForm({
     initialValues: {
-        name: '',
-        email: ''
+        email: '',
+        password: ''
     },
 
     validate: {
-        name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+        password: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
         email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
     },
   })
 
-  const handleSubmit = LoginForm.onSubmit(
-    console.log(LoginForm.values)
-  )
+  const [ loginUser, { isLoading, isError, error, isSuccess }] = useLoginUserMutation();
+
+//   const handleSubmit = LoginForm.onSubmit(
+//     async() => {
+//         try {
+//             const payload = await loginUser(LoginForm.values).unwrap();
+//             console.error('fulfilled', payload)
+//         } catch (error) {
+//             console.error('rejected', error);
+//         }
+//     }
+//   )
+
   return (
     <Paper className={form} radius={0}>
         <FormTitle
             title='Welcome back'
         />
-        <form onSubmit={handleSubmit}>
+        <form>
             <TextInput
                 placeholder="name@workemail.com"
                 size="md"
                 mb={20}
                 autoComplete='false'
                 classNames={{ input: inputField}}
-                {...LoginForm.getInputProps('name')}
+                {...LoginForm.getInputProps('email')}
             />
             <PasswordInput
                 placeholder="Enter password"
@@ -102,7 +108,7 @@ export const LoginPage: React.FC = () => {
                 mb={20}
                 autoComplete='false'
                 classNames={{ input: classes.inputField, visibilityToggle: passwordIcon }}
-                {...LoginForm.getInputProps('email')}
+                {...LoginForm.getInputProps('password')}
             />
             <Text align="right" mb={20} size={12} color={'#626769'} >Forgot Password</Text>
             <Button fullWidth mt="xl" size="md" bg={'#14466F'} mb={25} >
