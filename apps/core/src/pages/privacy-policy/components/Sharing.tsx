@@ -1,25 +1,14 @@
-import React from "react";
-import { createStyles, Navbar, Title, Text, List } from "@mantine/core";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-   marginBottom: "34px"
- },
- subHeading: {
-  marginBottom: "12px",
-  lineHeight: "20px"
-},
-paragraph: {
-  marginBottom: "20px"
-}
- }))
-const Sharing = () => {
+import { RefObject } from "react";
+import { Title, Text } from "@mantine/core";
+import useStyles from "./general";
+
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+const Sharing = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div  className={classes.pageSection} id="sharing">
+    <div className={classes.pageSection} id="sharing" ref={innerRef}>
       <Title className={classes.pageTitle}>Security</Title>
       <Text className={classes.paragraph}>
         Data security is a top priority for Zuri Chat. Zuri Chat makes every

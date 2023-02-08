@@ -1,26 +1,15 @@
-import { Title, Text, createStyles } from "@mantine/core";
-import React from "react";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  }
-}));
-const DataRetention = () => {
+import { Title, Text } from "@mantine/core";
+import { RefObject } from "react";
+import useStyles from "./general";
+
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+const DataRetention = ({ innerRef }: propType) => {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.pageSection} id="data-retention">
+    <div className={classes.pageSection} id="data-retention" ref={innerRef}>
       <Title className={classes.pageTitle}>Data Retention</Title>
       <Text fz="md" className={classes.paragraph}>
         Your personal information will only be kept by us for as long as it's

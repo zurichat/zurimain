@@ -1,26 +1,15 @@
-import { Text, Title, createStyles } from "@mantine/core";
-import React from "react";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  }
-}));
+import { Text, Title } from "@mantine/core";
+import { RefObject } from "react";
+import useStyles from "./general";
 
-const DataAuthority = () => {
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+
+const DataAuthority = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div className={classes.pageSection} id="data-auth">
+    <div className={classes.pageSection} id="data-auth" ref={innerRef}>
       <Title className={classes.pageTitle}>Data Protection Authority</Title>
       <Text fz="md" className={classes.paragraph}>
         You also have the right, according to applicable legislation, to I limit

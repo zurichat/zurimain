@@ -1,31 +1,13 @@
-import { Title, Text, List, createStyles } from "@mantine/core";
-import React from "react";
-
-const useStyles = createStyles(theme => (
-  {
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  },
-  list: {
-    marginBottom: "16px"
-  }
-}
-));
-const GlobalOperations = () => {
+import { Title, Text, List } from "@mantine/core";
+import { RefObject } from "react";
+import useStyles from "./general";
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+const GlobalOperations = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div className={classes.pageSection} id="global-ops">
+    <div className={classes.pageSection} id="global-ops" ref={innerRef}>
       <Title className={classes.pageTitle}>Our global operations</Title>
       <Text className={classes.paragraph}>
         Globally, we share the data we acquire with our partners, service

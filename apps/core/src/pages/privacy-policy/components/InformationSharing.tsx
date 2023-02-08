@@ -1,26 +1,19 @@
-import React from "react";
-import { createStyles, Navbar, Title, Text, List } from "@mantine/core";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
+import { RefObject } from "react";
+import { Title, Text } from "@mantine/core";
+import useStyles from "./general";
 
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  }
-}));
-const InformationSharing = () => {
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+
+const InformationSharing = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div className={classes.pageSection} id="information-sharing">
+    <div
+      className={classes.pageSection}
+      id="information-sharing"
+      ref={innerRef}
+    >
       <Title className={classes.pageTitle}>Information we share</Title>
       <Text className={classes.paragraph}>
         We provide guidelines that partners and other parties must abide by when

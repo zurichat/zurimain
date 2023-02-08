@@ -1,5 +1,5 @@
 import { uiSliceActions, useAppDispatch } from "@zuri/utilities";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   createStyles,
   Navbar,
@@ -7,12 +7,13 @@ import {
   Tooltip,
   Title,
   Flex,
-  Affix,
   Text,
   Anchor,
   Breadcrumbs,
-  MediaQuery
+  MediaQuery,
+  ScrollArea
 } from "@mantine/core";
+
 import {
   IconHome2,
   IconGauge,
@@ -31,7 +32,6 @@ import PrivacyModification from "./components/PrivacyModification";
 import GlobalOperations from "./components/GlobalOperations";
 import DataRetention from "./components/DataRetention";
 import Security from "./components/Security";
-// import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -47,10 +47,7 @@ const useStyles = createStyles(theme => ({
 
   sidebar: {
     height: "100%",
-    // width: "400px",
-    // paddingLeft: "16px",
     paddingBottom: "50px"
-    // position: "fixed"
   },
 
   sidebarSm: {
@@ -58,7 +55,8 @@ const useStyles = createStyles(theme => ({
   },
 
   mainWrap: {
-    background: theme.colors.secondary[4]
+    background: theme.colors.secondary[4],
+    scrollBehavior: "smooth"
   },
 
   subHeading: {
@@ -80,11 +78,7 @@ const useStyles = createStyles(theme => ({
   },
 
   mainSection: {
-    // width: "calc(100% - 350px)",
-    // marginLeft: "350px",
     padding: "40px 10px 100px 20px",
-    height: "100vh",
-    overflowY: "scroll",
     overflowX: "hidden"
   },
 
@@ -145,7 +139,9 @@ const useStyles = createStyles(theme => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     marginBottom: theme.spacing.xl,
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.secondary[4],
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[7]
+        : theme.colors.secondary[4],
     padding: theme.spacing.md,
     paddingTop: 18,
     height: 60,
@@ -183,7 +179,6 @@ const useStyles = createStyles(theme => ({
     marginRight: theme.spacing.md,
     fontWeight: 500,
     height: 44,
-    // lineHeight: "44px",
 
     "&:hover": {
       backgroundColor:
@@ -208,7 +203,6 @@ const useStyles = createStyles(theme => ({
     }
   }
 }));
-
 
 // breadcrumbs
 const items = [
@@ -235,14 +229,14 @@ const linksMockdata = [
   { title: "Information we collect", id: "informationCollection" },
   {
     title: "How We Process Your Information, and the Laws That Support It",
-    id: "information-processing"
+    id: "informationProcessing"
   },
   { title: "Information we share", id: "information-sharing" },
   { title: "Data Retention", id: "data-retention" },
   { title: "Security", id: "security" },
   {
-    title: "Modifications to this privacy policiy",
-    id: "privacy-modification"
+    title: "Modifications to this privacy policy",
+    id: "privacyModification"
   },
   { title: "Our global operations", id: "global-ops" },
   { title: "Your Rights", id: "rights" },
@@ -250,7 +244,7 @@ const linksMockdata = [
   { title: "Limitation of liability", id: "limitation" },
   {
     title: "Member account, Password, and Security",
-    id: ""
+    id: "member"
   },
   { title: "Use of services", id: "service-use" },
   { title: "Privacy Policy", id: "privacy" }
@@ -299,9 +293,58 @@ const PrivacyPage = () => {
     </a>
   ));
 
+  const headerRef = useRef<HTMLDivElement>(null);
+  const sectionWrapperRef = useRef<HTMLDivElement>(null);
+  const refs = {
+    privacyScopeRef: useRef<HTMLDivElement>(null),
+    privacyModificationRef: useRef<HTMLDivElement>(null),
+    informationCollectionRef: useRef<HTMLDivElement>(null),
+    informationSharingRef: useRef<HTMLDivElement>(null),
+    informationProcessingRef: useRef<HTMLDivElement>(null),
+    globalOperationsRef: useRef<HTMLDivElement>(null),
+    securityRef: useRef<HTMLDivElement>(null),
+    yourRightsRef: useRef<HTMLDivElement>(null),
+    dataRetentionRef: useRef<HTMLDivElement>(null),
+    dataAuthorityRef: useRef<HTMLDivElement>(null)
+  };
+  const pageSections = [
+    { pageId: "PrivacyScope", pageRef: refs.privacyScopeRef },
+    { pageId: "PrivacyModification", pageRef: refs.privacyModificationRef },
+    { pageId: "informationCollection", pageRef: refs.informationCollectionRef },
+    { pageId: "informationSharing", pageRef: refs.informationSharingRef },
+    { pageId: "informationProcessing", pageRef: refs.informationProcessingRef },
+    { pageId: "global-ops", pageRef: refs.globalOperationsRef },
+    { pageId: "security", pageRef: refs.securityRef },
+    { pageId: "rights", pageRef: refs.yourRightsRef },
+    { pageId: "data-retention", pageRef: refs.dataRetentionRef },
+    { pageId: "data-auth", pageRef: refs.dataAuthorityRef }
+  ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (sectionWrapperRef.current === null || headerRef.current === null) {
+        return;
+      } else {
+        const section = pageSections.find(
+          pageSection => activeLink === pageSection.pageId
+        );
+        if (section && section.pageRef.current !== null) {
+          sectionWrapperRef.current.scrollTo(
+            0,
+            section.pageRef.current.scrollHeight -
+              headerRef.current.scrollHeight -
+              400
+          );
+        }
+      }
+    }, 200);
+  }, [activeLink]);
+
+  console.log({ activeLink });
+
   return (
     <>
-      <div className={classes.pageheader}>
+      <div className={classes.pageheader} ref={headerRef}>
         <Title className={classes.pageintro}>Privacy policy</Title>
         <Breadcrumbs
           separator=">"
@@ -327,30 +370,32 @@ const PrivacyPage = () => {
             </Flex>
           </Flex>
         </MediaQuery>
-
-        <div className={classes.mainSection}>
-          <div>
-            <Text fw={700} fz="md" className={classes.subHeading}>
-              Effective Date: January 23, 2023
-            </Text>
-            <Text className={classes.paragraph}>
-              This Privacy Policy explains how Zuri Chat collects, uses, and
-              discloses information associated with an identified or
-              identifiable individual (referred to as "Personal Data" in this
-              Privacy Policy) and what choices you have regarding this activity.
-              Do not hesitate to contact us if you have any questions.
-            </Text>
+        <ScrollArea style={{ height: 100 + "vh" }}>
+          <div className={classes.mainSection} ref={sectionWrapperRef}>
+            <div>
+              <Text fw={700} fz="md" className={classes.subHeading}>
+                Effective Date: January 23, 2023
+              </Text>
+              <Text className={classes.paragraph}>
+                This Privacy Policy explains how Zuri Chat collects, uses, and
+                discloses information associated with an identified or
+                identifiable individual (referred to as "Personal Data" in this
+                Privacy Policy) and what choices you have regarding this
+                activity. Do not hesitate to contact us if you have any
+                questions.
+              </Text>
+            </div>
+            <PrivacyScope innerRef={refs.privacyScopeRef} />
+            <InformationCollection innerRef={refs.informationCollectionRef} />
+            <InformationProcessing innerRef={refs.informationProcessingRef} />
+            <InformationSharing innerRef={refs.informationSharingRef} />
+            <Security innerRef={refs.securityRef} />
+            <DataRetention innerRef={refs.dataRetentionRef} />
+            <PrivacyModification innerRef={refs.privacyModificationRef} />
+            <GlobalOperations innerRef={refs.globalOperationsRef} />
+            <DataAuthority innerRef={refs.dataAuthorityRef} />
           </div>
-          <PrivacyScope />
-          <InformationCollection />
-          <InformationProcessing />
-          <InformationSharing />
-          <Security />
-          <DataRetention />
-          <PrivacyModification />
-          <GlobalOperations />
-          <DataAuthority />
-        </div>
+        </ScrollArea>
       </Flex>
     </>
   );

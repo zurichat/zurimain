@@ -1,26 +1,15 @@
-import { Title, Text, createStyles } from "@mantine/core";
-import React from "react";
+import { Title, Text } from "@mantine/core";
+import { RefObject } from "react";
 import { Link } from "react-router-dom";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  }
-}));
-const YourRights = () => {
+import useStyles from "./general";
+
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+const YourRights = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div className={classes.pageSection} id="rights">
+    <div className={classes.pageSection} id="rights" ref={innerRef}>
       <Title className={classes.pageTitle}>Your Rights</Title>
       <Text className={classes.paragraph}>
         People have legal rights related to their personal data anywhere in the

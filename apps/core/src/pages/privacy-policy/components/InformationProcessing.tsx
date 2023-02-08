@@ -1,28 +1,19 @@
-import React from "react";
-import { createStyles, Navbar, Title, Text, List } from "@mantine/core";
-const useStyles = createStyles(theme => ({
-  pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
-  },
-  pageSection: {
-    marginBottom: "34px"
-  },
-  subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
-  },
-  paragraph: {
-    marginBottom: "20px"
-  },
-  list: {
-    marginBottom: "16px"
-  }
-}));
-const InformationProcessing = () => {
+import { RefObject } from "react";
+import { Title, Text, List } from "@mantine/core";
+import useStyles from "./general";
+
+type propType = {
+  innerRef: RefObject<HTMLDivElement>;
+};
+
+const InformationProcessing = ({ innerRef }: propType) => {
   const { classes } = useStyles();
   return (
-    <div className={classes.pageSection} id="information-processing">
+    <div
+      className={classes.pageSection}
+      id="informationProcessing"
+      ref={innerRef}
+    >
       <Title className={classes.pageTitle}>
         How We Process Your Information, and the Laws That Support It
       </Title>
@@ -73,7 +64,9 @@ const InformationProcessing = () => {
         <List.Item className={classes.list}>
           To look into and aid in stopping abuse and security issues.
         </List.Item>
-        <List.Item className={classes.list}>To de-identify or aggregate data.</List.Item>
+        <List.Item className={classes.list}>
+          To de-identify or aggregate data.
+        </List.Item>
         <List.Item className={classes.list}>
           Respond to legal requests and share information with others, including
           law enforcement..
