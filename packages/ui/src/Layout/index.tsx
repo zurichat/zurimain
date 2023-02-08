@@ -29,9 +29,7 @@ export const Layout = withMantine(() => {
       styles={{
         main: {
           background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.white
+            theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white
         }
       }}
       navbarOffsetBreakpoint="sm"

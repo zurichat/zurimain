@@ -8,7 +8,8 @@ import {
   Text
 } from "@mantine/core";
 import { IconHash, TablerIcon } from "@tabler/icons";
-import { useState } from "react";
+import React, { useState } from "react";
+import { ChannelAction } from "./ChannelAction";
 
 const useStyles = createStyles(theme => ({
   pluginitem: { border: "none" },
@@ -29,10 +30,22 @@ const useStyles = createStyles(theme => ({
   buttonText: {
     fontWeight: 500,
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-    fontSize: theme.fontSizes.sm
+    fontSize: theme.fontSizes.sm,
+    whiteSpace: "nowrap"
   },
   control: {
-    width: "100%",
+    width: "auto",
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[7]
+          : theme.colors.secondary[4],
+      color: theme.colorScheme === "dark" ? theme.white : theme.black
+    }
+  },
+  collectionsHeader: {
+    paddingRight: theme.spacing.md,
+    marginBottom: 5,
     backgroundColor:
       theme.colorScheme === "dark"
         ? theme.colors.dark[7]
@@ -41,8 +54,27 @@ const useStyles = createStyles(theme => ({
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
-          : theme.colors.gray[1],
+          : theme.colors.secondary[4],
       color: theme.colorScheme === "dark" ? theme.white : theme.black
+    }
+  },
+  mainLink: {
+    width: 23,
+    height: 23,
+    borderRadius: theme.radius.sm,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.primary[0]
+        : theme.colors.gray[7],
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.primary[0]
+          : theme.colors.gray[3]
     }
   },
   link: {
@@ -87,7 +119,7 @@ const useStyles = createStyles(theme => ({
     color: "black",
     marginRight: 8
   },
-  hashActive: { color: "white" },
+  hashActive: { color: "white" }
 }));
 
 interface PluginItemProps {
@@ -97,11 +129,9 @@ interface PluginItemProps {
   links?: { label: string; link: string; image?: string }[];
 }
 
-const PluginItem: React.FC<PluginItemProps> = ({
-  label,
-  links
-}) => {
+const PluginItem: React.FC<PluginItemProps> = ({ label, links }) => {
   const [active, setActive] = useState("");
+  const [isShowAction, showActionButton] = useState(false);
   const { classes, cx, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const items = (hasLinks ? links : []).map(link => (
@@ -154,6 +184,7 @@ const PluginItem: React.FC<PluginItemProps> = ({
       )}
     </Text>
   ));
+
   return (
     <Accordion
       p={0}
@@ -162,9 +193,31 @@ const PluginItem: React.FC<PluginItemProps> = ({
       classNames={classes}
     >
       <Accordion.Item value="photos" className={classes.pluginitem}>
-        <Accordion.Control h="35px" className={classes.control}>
-          <Text className={classes.buttonText}> {label}</Text>
-        </Accordion.Control>
+        <Flex
+          className={classes.collectionsHeader}
+          gap="5px"
+          justify="space-between"
+          align="center"
+          direction="row"
+          wrap="nowrap"
+          onMouseEnter={() => showActionButton(true)}
+          onMouseLeave={() => showActionButton(false)}
+        >
+          <Accordion.Control h="35px" className={classes.control}>
+            <Text className={classes.buttonText}> {label}</Text>
+          </Accordion.Control>
+          {isShowAction && (
+            <Flex
+              gap="sm"
+              justify="flex-end"
+              align="center"
+              direction="row"
+              wrap="wrap"
+            >
+              <ChannelAction />
+            </Flex>
+          )}
+        </Flex>
         <Accordion.Panel className={classes.accordion}>
           {hasLinks ? <Box>{items}</Box> : null}
         </Accordion.Panel>
