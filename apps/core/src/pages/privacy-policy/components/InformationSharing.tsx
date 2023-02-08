@@ -60,7 +60,7 @@ const InformationSharing = ({ innerRef }: propType) => {
         parties. This includes for the purposes of determining whether there has
         been a breach of contract, a violation of our terms or policies, a
         breaking of the law, or the detection, remediation, or prevention of
-        fraud. When it is essential for the establishment, exercise, or defense
+        fraud. When it is essential for the establishment, exercise, or defense
         of legal claims, as well as to look into or stop real or suspected loss
         or harm to people or property, your personal information may also be
         revealed.

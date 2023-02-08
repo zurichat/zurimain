@@ -25,8 +25,8 @@ const PrivacyModification = ({ innerRef }: propType) => {
         significantly modify your privacy rights, such as through the Services
         or by email. You should deactivate your Services account if you object
         to the changes made to this Privacy Policy. If you want to ask for the
-        deletion of Personal Data that is under the Customer's control, get in
-        touch with them.
+        deletion of Personal Data that is under the Customer&apos;s control, get
+        in touch with them.
       </Text>
     </div>
   );

@@ -25,26 +25,27 @@ const InformationCollection = ({ innerRef }: propType) => {
         name, job title, organization name, and phone number when you, for
         example, seek information about our products, including Workplace,
         download resources, sign up for marketing mailings, request a free
-        trial, or attend one of our events or conventions. You won't be able to,
-        for instance, create an account to begin your free Workplace trial if
-        you don't give us this information. When you agree to receive
-        marketing-related electronic messages from us and are the administrator
-        of your organization's account, we will gather your contact information.
+        trial, or attend one of our events or conventions. You won&apos;t be
+        able to, for instance, create an account to begin your free Workplace
+        trial if you don&apos;t give us this information. When you agree to
+        receive marketing-related electronic messages from us and are the
+        administrator of your organization&apos;s account, we will gather your
+        contact information.
       </Text>
       <Text fw={700} fz="md" className={classes.subHeading}>
         Data You Provide to Us
       </Text>
       <Text className={classes.paragraph}>
         You could give us further information when you get in touch with us. The
-        kind of information depends on why you've gotten in touch with us. For
-        instance, if you experience a problem while using one of our sites, you
-        can give us any information you deem necessary to resolve the problem
-        including contact information (e.g., an email address). You could, for
-        instance, write us an email containing details on the functionality of
-        our website or other problems. Similar to this, you can provide us with
-        information about your workplace or other details to help us answer to
-        your inquiry if you ask us for details about, say, the Workplace
-        Services.
+        kind of information depends on why you&apos;ve gotten in touch with us.
+        For instance, if you experience a problem while using one of our sites,
+        you can give us any information you deem necessary to resolve the
+        problem including contact information (e.g., an email address). You
+        could, for instance, write us an email containing details on the
+        functionality of our website or other problems. Similar to this, you can
+        provide us with information about your workplace or other details to
+        help us answer to your inquiry if you ask us for details about, say, the
+        Workplace Services.
       </Text>
       <Text fw={700} fz="md" className={classes.subHeading}>
         Data from surveys and user feedback
@@ -95,12 +96,12 @@ const InformationCollection = ({ innerRef }: propType) => {
       </Text>
       <Text className={classes.paragraph}>
         Our websites employ cookies. A cookie is a very small piece of
-        information that our website transmits to a user's browser and that the
-        user's browser may then save on their hard disk so that we may recognize
-        their computer or other device when they visit again. We also employ
-        other technologies for a related purpose. In our Cookies Policy, you may
-        read more about how we use cookies and other similar technologies on our
-        workplace website.
+        information that our website transmits to a user&apos;s browser and that
+        the user&apos;s browser may then save on their hard disk so that we may
+        recognize their computer or other device when they visit again. We also
+        employ other technologies for a related purpose. In our Cookies Policy,
+        you may read more about how we use cookies and other similar
+        technologies on our workplace website.
       </Text>
     </div>
   );

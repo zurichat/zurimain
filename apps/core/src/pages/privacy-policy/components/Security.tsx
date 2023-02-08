@@ -24,7 +24,7 @@ const Security = ({ innerRef }: propType) => {
         stored on our systems, or while otherwise in our care due to the nature
         of communications and information processing technology. You will be
         leaving our website when you click a link to a third-party website and e
-        don't control or endorse what is on third-party sites.
+        don&apos;t control or endorse what is on third-party sites.
       </Text>
     </div>
   );

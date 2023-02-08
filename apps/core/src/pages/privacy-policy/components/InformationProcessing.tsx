@@ -50,7 +50,7 @@ const InformationProcessing = ({ innerRef }: propType) => {
       <Text className={classes.paragraph}>
         When your interests or basic rights and freedoms do not outweigh our
         legitimate interests or the legitimate interests of a third party, we
-        depend on those ("legitimate interests").
+        depend on those (&quot;legitimate interests&quot;).
       </Text>
       <List>
         <List.Item className={classes.list}>

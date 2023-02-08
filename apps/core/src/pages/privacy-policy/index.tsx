@@ -211,16 +211,6 @@ const items = [
   </Anchor>
 ));
 
-const mainLinksMockdata = [
-  { icon: IconHome2, label: "Home" },
-  { icon: IconGauge, label: "Dashboard" },
-  { icon: IconDeviceDesktopAnalytics, label: "Analytics" },
-  { icon: IconCalendarStats, label: "Releases" },
-  { icon: IconUser, label: "Account" },
-  { icon: IconFingerprint, label: "Security" },
-  { icon: IconSettings, label: "Settings" }
-];
-
 const linksMockdata = [
   { title: "The Scope of This Privacy Policy", id: "privacyScope" },
   { title: "Information we collect", id: "informationCollection" },
@@ -339,7 +329,7 @@ const PrivacyPage = () => {
             <Flex className={classes.wrapper}>
               <div className={classes.main}>
                 <Title order={4} className={classes.title}>
-                  {active}
+                  Content
                 </Title>
                 {links}
               </div>
@@ -355,10 +345,10 @@ const PrivacyPage = () => {
               <Text className={classes.paragraph}>
                 This Privacy Policy explains how Zuri Chat collects, uses, and
                 discloses information associated with an identified or
-                identifiable individual (referred to as "Personal Data" in this
-                Privacy Policy) and what choices you have regarding this
-                activity. Do not hesitate to contact us if you have any
-                questions.
+                identifiable individual (referred to as &quot;Personal
+                Data&quot; in this Privacy Policy) and what choices you have
+                regarding this activity. Do not hesitate to contact us if you
+                have any questions.
               </Text>
             </div>
             <PrivacyScope innerRef={refs.privacyScopeRef} />

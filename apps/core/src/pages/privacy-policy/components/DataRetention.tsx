@@ -12,7 +12,7 @@ const DataRetention = ({ innerRef }: propType) => {
     <div className={classes.pageSection} id="data-retention" ref={innerRef}>
       <Title className={classes.pageTitle}>Data Retention</Title>
       <Text fz="md" className={classes.paragraph}>
-        Your personal information will only be kept by us for as long as it's
+        Your personal information will only be kept by us for as long as it&apos;s
         required to fulfill the goals outlined in this privacy statement. For
         the life of the project and for as long beyond that as is necessary to
         conduct analyses, reply to peer review, or otherwise verify the input,
