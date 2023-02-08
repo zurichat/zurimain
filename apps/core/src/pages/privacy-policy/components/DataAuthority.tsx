@@ -21,7 +21,7 @@ const DataAuthority = ({ innerRef }: propType) => {
         supervisory body. You may find the contact information for your local
         data protection authority on the following page if you work or live in a
         nation that is a member of the European Union or the EEA. If you live in
-        the UK, you may contact the UK supervisory authority, the Information
+        the UK, you may contact the UK supervisory authority, the Information
         Commissioner's Office.
       </Text>
     </div>

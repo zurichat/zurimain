@@ -2,9 +2,6 @@ import { uiSliceActions, useAppDispatch } from "@zuri/utilities";
 import { useEffect, useRef, useState } from "react";
 import {
   createStyles,
-  Navbar,
-  UnstyledButton,
-  Tooltip,
   Title,
   Flex,
   Text,
@@ -258,32 +255,13 @@ const PrivacyPage = () => {
   const [active, setActive] = useState("Content");
   const [activeLink, setActiveLink] = useState("privacyScope");
 
-  const mainLinks = mainLinksMockdata.map(link => (
-    <Tooltip
-      label={link.label}
-      position="right"
-      withArrow
-      transitionDuration={0}
-      key={link.label}
-    >
-      <UnstyledButton
-        onClick={() => setActive(link.label)}
-        className={cx(classes.mainLink, {
-          [classes.mainLinkActive]: link.label === active
-        })}
-      >
-        <link.icon stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
-  ));
-
   const links = linksMockdata.map(link => (
     <a
       className={cx(classes.link, {
         [classes.linkActive]: activeLink === link.id
       })}
       href={`#${link.id}`}
-      onClick={event => {
+      onClick={() => {
         // event.preventDefault();
         setActiveLink(link.id);
       }}
@@ -339,8 +317,6 @@ const PrivacyPage = () => {
       }
     }, 200);
   }, [activeLink]);
-
-  console.log({ activeLink });
 
   return (
     <>
