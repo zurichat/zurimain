@@ -3,12 +3,14 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 export interface UiState {
   headerVisible: boolean;
   sideBarVisible: boolean;
+  footerVisible: boolean;
 }
 
 const initialState = (): UiState => {
   return {
     headerVisible: true,
-    sideBarVisible: true
+    sideBarVisible: true,
+    footerVisible: false
   };
 };
 
@@ -21,6 +23,9 @@ export const uiSlice = createSlice({
     },
     setHeaderVisibility: (state, action: PayloadAction<boolean>) => {
       state.headerVisible = action.payload;
+    },
+    setFooterVisibility: (state, action: PayloadAction<boolean>) => {
+      state.footerVisible = action.payload;
     }
   }
 });
