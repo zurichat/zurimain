@@ -2,11 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import { ContactPage, ErrorPage } from "../pages";
 
-// Onboarding
+// Onboarding Pages
 import LoginPage from "../pages/onboarding/LoginPage";
-import SignUpPage from "../pages/onboarding/SignUpPage";
-import { LoginLayout } from "@zuri/ui";
-import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin";
+import SignUpPage from "../pages/onboarding/Register";
+import WorkspaceLogin from "../pages/onboarding/WorkspaceLogin/index";
+
+// Login pages layout
+import { LoginWrapper } from "@zuri/ui";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "login",
-    element: <LoginLayout />,
+    element: <LoginWrapper />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: "signup",
-    element: <LoginLayout />,
+    element: <LoginWrapper />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "workspace",
-    element: <LoginLayout />,
+    element: <LoginWrapper />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -56,9 +58,7 @@ const router = createBrowserRouter([
         element: <WorkspaceLogin />
       }
     ]
-  },
-
-  
+  }
 ]);
 
 export default router;

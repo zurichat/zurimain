@@ -35,7 +35,7 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-const FormHeader: React.FC = () => {
+export const FormHeader: React.FC = () => {
   const { classes } = useStyles();
   return (
     <header className={classes.formHeader}>

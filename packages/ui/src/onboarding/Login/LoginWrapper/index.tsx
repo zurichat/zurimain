@@ -37,7 +37,7 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-export const LoginLayout: React.FC = withMantine(() => {
+export const LoginWrapper: React.FC = withMantine(() => {
   const { classes } = useStyles();
   return (
     <div className={classes.pageContainer}>
@@ -52,4 +52,4 @@ export const LoginLayout: React.FC = withMantine(() => {
   );
 });
 
-export default LoginLayout;
+export default LoginWrapper;

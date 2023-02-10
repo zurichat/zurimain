@@ -7,7 +7,7 @@ import {
   Anchor,
   Divider
 } from "@mantine/core";
-import FormTitle from "../../components/FormTitle";
+import { FormTitle } from "@zuri/ui";
 
 const useStyles = createStyles(theme => ({
   loginPage: {

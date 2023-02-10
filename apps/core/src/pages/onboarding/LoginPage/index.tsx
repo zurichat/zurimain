@@ -9,7 +9,7 @@ import {
   Divider
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import FormTitle from "../../components/FormTitle";
+import { FormTitle } from "@zuri/ui";
 
 const useStyles = createStyles(theme => ({
   form: {

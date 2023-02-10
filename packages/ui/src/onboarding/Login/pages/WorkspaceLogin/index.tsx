@@ -113,7 +113,7 @@ const useStyles = createStyles(theme => ({
 
   outlineBtn: {
     border: "1px solid #14466F",
-    color: "#14466F"
+    color: theme.colors.primary[9]
   },
 
   link: {
@@ -122,7 +122,7 @@ const useStyles = createStyles(theme => ({
 }));
 
 export const WorkspaceLogin = () => {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   return (
     <Paper className={classes.form} radius={0}>
       <FormTitle
@@ -146,7 +146,7 @@ export const WorkspaceLogin = () => {
           .zurichat.com
         </Text>
       </Flex>
-      <Button fullWidth mt="xl" size="md" bg={"#14466F"} mb={25}>
+      <Button fullWidth mt="xl" size="md" bg={theme.colors.primary[9]} mb={25}>
         Continue
       </Button>
       <Text
@@ -161,7 +161,7 @@ export const WorkspaceLogin = () => {
         <Anchor<"a">
           href="#"
           weight={700}
-          color={"#14466F"}
+          color={theme.colors.primary[9]}
           onClick={event => event.preventDefault()}
           className={classes.link}
         >
@@ -180,7 +180,7 @@ export const WorkspaceLogin = () => {
         fullWidth
         mt="xl"
         size="md"
-        color="#14466F"
+        color={theme.colors.primary[9]}
         variant="outline"
         mb={25}
         className={classes.outlineBtn}

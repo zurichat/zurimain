@@ -5,6 +5,7 @@ export * from "./Layout";
 
 // onboarding pages
 export * from "./onboarding/Login/LoginWrapper";
-export * from "./onboarding/Login/pages/LoginPage";
-export * from "./onboarding/Login/pages/Register";
-export * from "./onboarding/Login/pages/WorkspaceLogin";
+
+// onboarding components
+export * from "./onboarding/Login/components/FormHeader";
+export * from "./onboarding/Login/components/FormTitle";

@@ -5,9 +5,10 @@ import {
   Button,
   Text,
   Anchor,
-  Divider
+  Divider,
+  Flex
 } from "@mantine/core";
-import FormTitle from "../../components/FormTitle";
+import { FormTitle } from "@zuri/ui";
 
 const useStyles = createStyles(theme => ({
   loginPage: {
@@ -55,7 +56,7 @@ const useStyles = createStyles(theme => ({
   },
 
   form: {
-    maxWidth: "480px",
+    maxWidth: "500px",
     width: "100%",
     background: "transparent",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
@@ -66,7 +67,7 @@ const useStyles = createStyles(theme => ({
   formImage: {
     width: "40%",
     height: "100%",
-    background: theme.colors.primary[9],
+    background: "#14466F",
     color: "white",
     zIndex: 99,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
@@ -76,10 +77,13 @@ const useStyles = createStyles(theme => ({
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: "44px",
+    fontSize: "40px",
     lineHeight: "50px",
     fontWeight: 700,
-    color: "#1E2122"
+    color: "#1E2122",
+    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+      fontSize: "28px"
+    }
   },
 
   logo: {
@@ -94,30 +98,81 @@ const useStyles = createStyles(theme => ({
     fontSize: "20px",
     fontWeight: 700,
     color: "#373B3D"
+  },
+
+  fullwidth: {
+    width: "100%"
+  },
+
+  urlField: {
+    width: "100%",
+    maxWidth: "270px",
+    backgroundColor: "transparent",
+    color: "#14466F"
+  },
+
+  outlineBtn: {
+    border: "1px solid #14466F",
+    color: theme.colors.primary[9]
+  },
+
+  link: {
+    color: "#14466F"
   }
 }));
 
-export const SignupPage = () => {
+export const WorkspaceLogin = () => {
   const { classes, theme } = useStyles();
   return (
     <Paper className={classes.form} radius={0}>
       <FormTitle
-        title="Get Started"
-        subtitle="We suggest you use your work email to register"
+        title="Sign in to your workspace"
+        subtitle="Enter your workplace"
+        boldSubtitle="Zurichat URL"
       />
-      <TextInput
-        placeholder="name@workemail.com"
-        size="md"
-        mb={20}
-        autoComplete="false"
-      />
+      <Flex
+        justify={"start"}
+        align={"center"}
+        gap={"10px"}
+        className={classes.fullwidth}
+      >
+        <TextInput
+          placeholder="name@workemail.com"
+          size="md"
+          autoComplete="false"
+          classNames={{ input: classes.urlField }}
+        />
+        <Text weight={700} size={20} color="#373B3D">
+          .zurichat.com
+        </Text>
+      </Flex>
       <Button fullWidth mt="xl" size="md" bg={theme.colors.primary[9]} mb={25}>
         Continue
       </Button>
+      <Text
+        align="center"
+        mt="md"
+        color={"#373B3D"}
+        weight={"400"}
+        size={16}
+        mb={25}
+      >
+        Don’t know your workspace URL ?{" "}
+        <Anchor<"a">
+          href="#"
+          weight={700}
+          color={theme.colors.primary[9]}
+          onClick={event => event.preventDefault()}
+          className={classes.link}
+        >
+          Find your workspace
+        </Anchor>
+      </Text>
       <Divider
         my="xs"
         label="OR"
         labelPosition="center"
+        labelProps={{ color: "#373B3D" }}
         color="#B5BEC1"
         classNames={{ label: classes.label }}
       />
@@ -125,33 +180,15 @@ export const SignupPage = () => {
         fullWidth
         mt="xl"
         size="md"
-        bg={"transparent"}
-        variant="outline"
         color={theme.colors.primary[9]}
+        variant="outline"
         mb={25}
+        className={classes.outlineBtn}
       >
-        Login with Google
+        Create A New Workspace
       </Button>
-      <Text
-        align="center"
-        mt="md"
-        color={"#373B3D"}
-        weight={"700"}
-        size={20}
-        mb={25}
-      >
-        New to Zurichat ?{" "}
-        <Anchor<"a">
-          href="#"
-          weight={700}
-          color={theme.colors.primary[9]}
-          onClick={event => event.preventDefault()}
-        >
-          Log In
-        </Anchor>
-      </Text>
     </Paper>
   );
 };
 
-export default SignupPage;
+export default WorkspaceLogin;

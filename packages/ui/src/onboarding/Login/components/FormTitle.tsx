@@ -16,7 +16,11 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-const FormTitle: React.FC<Props> = ({ title, subtitle, boldSubtitle }) => {
+export const FormTitle: React.FC<Props> = ({
+  title,
+  subtitle,
+  boldSubtitle
+}) => {
   const { classes } = useStyles();
   return (
     <div>
