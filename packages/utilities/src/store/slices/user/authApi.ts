@@ -1,14 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { GenericResponse, Login, RegisterInput } from "@zuri/types";
+import { GenericResponse, RegisterInput } from "@zuri/types";
 import { userApi } from "./userApi";
 import { BASE_API_URL } from "../../../constants";
-
-const BASE_URL = BASE_API_URL;
 
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}/api/auth/`
+    baseUrl: `${BASE_API_URL}/api/auth/`
   }),
   endpoints: builder => ({
     registerUser: builder.mutation<GenericResponse, RegisterInput>({
@@ -20,10 +18,7 @@ export const authApi = createApi({
         };
       }
     }),
-    loginUser: builder.mutation<
-      { access_token: string; status: string },
-      Login
-    >({
+    loginUser: builder.mutation({
       query(data) {
         return {
           url: "/auth/login",
@@ -63,9 +58,4 @@ export const authApi = createApi({
   })
 });
 
-export const {
-  useLoginUserMutation,
-  useRegisterUserMutation,
-  useLogoutUserMutation,
-  useVerifyEmailMutation
-} = authApi;
+export default authApi;

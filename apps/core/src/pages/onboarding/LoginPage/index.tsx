@@ -114,6 +114,7 @@ export const LoginPage: React.FC = () => {
         color={theme.colors.primary[9]}
         mb={25}
         className={classes.outlineBtn}
+        disabled={true}
       >
         Login with Google
       </Button>
