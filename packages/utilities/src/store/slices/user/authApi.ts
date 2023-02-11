@@ -12,7 +12,7 @@ export const authApi = createApi({
     registerUser: builder.mutation<GenericResponse, RegisterInput>({
       query(data) {
         return {
-          url: "register",
+          url: "/users",
           method: "POST",
           body: data
         };
@@ -34,25 +34,6 @@ export const authApi = createApi({
         } catch (error) {
           console.error(error);
         }
-      }
-    }),
-    verifyEmail: builder.mutation<
-      GenericResponse,
-      { verificationCode: string }
-    >({
-      query({ verificationCode }) {
-        return {
-          url: `verifyemail/${verificationCode}`,
-          method: "GET"
-        };
-      }
-    }),
-    logoutUser: builder.mutation<void, void>({
-      query() {
-        return {
-          url: "logout",
-          credentials: "include"
-        };
       }
     })
   })
