@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
+
 :root {
-  --color-primary: #011627;
+  --color-primary: #00B87C;
   --color-secondary: #8b8c8a;
   --color-danger: #e71d36;
   --color-warning: #ff9f1c;

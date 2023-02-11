@@ -1,5 +1,5 @@
 {
   "extends": "@zuri/tsconfig/reactjs.json",
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "index.d.ts"],
   "exclude": ["node_modules"]
 }

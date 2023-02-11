@@ -11,16 +11,13 @@ import {
   Menu,
   NavLink,
   ScrollArea,
-  Text,
-  Title
+  Text
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
+import { Link } from "react-router-dom";
+import { BrandAvatar } from "../BrandAvatar";
 
 const useStyles = createStyles(theme => ({
-  header:{background:
-    theme.colorScheme === "dark"
-      ? theme.colors.dark[8]
-      : theme.colors.secondary[4]},
   innerLink: {
     textDecoration: "none",
     color:
@@ -41,7 +38,7 @@ const useStyles = createStyles(theme => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
+    fontSize: theme.fontSizes.md,
     fontWeight: 500,
 
     "&:hover": {
@@ -63,13 +60,13 @@ const useStyles = createStyles(theme => ({
   },
 
   hiddenMobile: {
-    [theme.fn.smallerThan("sm")]: {
+    [theme.fn.smallerThan(900)]: {
       display: "none"
     }
   },
 
   hiddenDesktop: {
-    [theme.fn.largerThan("sm")]: {
+    [theme.fn.largerThan(900)]: {
       display: "none"
     }
   }
@@ -151,21 +148,25 @@ export const Header: React.FC<HeaderProps> = props => {
     );
   });
 
-  const appTitle = <Title>Zuri Chat</Title>;
-
   return (
     <Box>
-      <MantineHeader className={classes.header} height={60} px="md">
+      <MantineHeader height={80} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
-          {appTitle}
+          <Link to="/" className={classes.innerLink}>
+            <BrandAvatar />
+          </Link>
 
           <Group sx={{ height: "100%" }} className={classes.hiddenMobile}>
             {items}
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button size="lg" variant="subtle">
+              Log in
+            </Button>
+            <Button size="lg" variant="filled">
+              Sign up
+            </Button>
           </Group>
 
           <Burger
@@ -181,7 +182,7 @@ export const Header: React.FC<HeaderProps> = props => {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title={appTitle}
+        title={<BrandAvatar />}
         className={classes.hiddenDesktop}
         zIndex={1000000}
       >
@@ -201,8 +202,12 @@ export const Header: React.FC<HeaderProps> = props => {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button size="lg" variant="filled">
+              Log in
+            </Button>
+            <Button size="lg" variant="subtle">
+              Sign up
+            </Button>
           </Group>
         </ScrollArea>
       </Drawer>
