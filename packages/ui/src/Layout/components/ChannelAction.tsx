@@ -12,11 +12,10 @@ const useStyles = createStyles(theme => ({
         : theme.colors.secondary[4]
   }
 }));
-//
+
 export function ChannelAction() {
   const { classes } = useStyles();
 
-  //
   return (
     <Group position="center">
       <Menu withArrow width={200} position="right" transition="scale-x">
