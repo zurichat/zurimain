@@ -11,15 +11,6 @@ import {
   ScrollArea
 } from "@mantine/core";
 
-import {
-  IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconCalendarStats,
-  IconUser,
-  IconSettings
-} from "@tabler/icons";
 import PrivacyScope from "./components/PrivacyScope";
 import DataAuthority from "./components/DataAuthority";
 import InformationCollection from "./components/InformationCollection";
@@ -29,6 +20,7 @@ import PrivacyModification from "./components/PrivacyModification";
 import GlobalOperations from "./components/GlobalOperations";
 import DataRetention from "./components/DataRetention";
 import Security from "./components/Security";
+import YourRights from "./components/YourRights";
 
 const useStyles = createStyles(theme => ({
   wrapper: {
@@ -201,8 +193,7 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-// breadcrumbs
-const items = [
+const breadcrumbs = [
   { title: "Privacy & Terms ", href: "#" },
   { title: "Privacy policy", href: "#" }
 ].map((item, index) => (
@@ -252,7 +243,6 @@ const PrivacyPage = () => {
       })}
       href={`#${link.id}`}
       onClick={() => {
-        // event.preventDefault();
         setActiveLink(link.id);
       }}
       key={link.id}
@@ -263,49 +253,39 @@ const PrivacyPage = () => {
 
   const headerRef = useRef<HTMLDivElement>(null);
   const sectionWrapperRef = useRef<HTMLDivElement>(null);
-  const refs = {
-    privacyScopeRef: useRef<HTMLDivElement>(null),
-    privacyModificationRef: useRef<HTMLDivElement>(null),
-    informationCollectionRef: useRef<HTMLDivElement>(null),
-    informationSharingRef: useRef<HTMLDivElement>(null),
-    informationProcessingRef: useRef<HTMLDivElement>(null),
-    globalOperationsRef: useRef<HTMLDivElement>(null),
-    securityRef: useRef<HTMLDivElement>(null),
-    yourRightsRef: useRef<HTMLDivElement>(null),
-    dataRetentionRef: useRef<HTMLDivElement>(null),
-    dataAuthorityRef: useRef<HTMLDivElement>(null)
-  };
+
   const pageSections = [
-    { pageId: "PrivacyScope", pageRef: refs.privacyScopeRef },
-    { pageId: "PrivacyModification", pageRef: refs.privacyModificationRef },
-    { pageId: "informationCollection", pageRef: refs.informationCollectionRef },
-    { pageId: "informationSharing", pageRef: refs.informationSharingRef },
-    { pageId: "informationProcessing", pageRef: refs.informationProcessingRef },
-    { pageId: "global-ops", pageRef: refs.globalOperationsRef },
-    { pageId: "security", pageRef: refs.securityRef },
-    { pageId: "rights", pageRef: refs.yourRightsRef },
-    { pageId: "data-retention", pageRef: refs.dataRetentionRef },
-    { pageId: "data-auth", pageRef: refs.dataAuthorityRef }
+    { pageId: "PrivacyScope", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "PrivacyModification", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "InformationCollection", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "InformationSharing", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "InformationProcessing", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "GlobalOperations", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "Security", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "YourRights", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "DataRetention", pageRef: useRef<HTMLDivElement>(null) },
+    { pageId: "DataAuthority", pageRef: useRef<HTMLDivElement>(null) }
   ];
 
+  // this is supposed to scroll the page to the desired section when the link on the sidebar is clicked but adjust it into the users view by 400px. It does not work properly at the moment
   useEffect(() => {
-    setTimeout(() => {
-      if (sectionWrapperRef.current === null || headerRef.current === null) {
+    const timeoutId = setTimeout(() => {
+      if (!sectionWrapperRef.current || !headerRef.current) {
         return;
-      } else {
-        const section = pageSections.find(
-          pageSection => activeLink === pageSection.pageId
-        );
-        if (section && section.pageRef.current !== null) {
-          sectionWrapperRef.current.scrollTo(
-            0,
-            section.pageRef.current.scrollHeight -
-              headerRef.current.scrollHeight -
-              400
-          );
-        }
+      }
+      const section = pageSections.find(
+        pageSection => activeLink === pageSection.pageId
+      );
+      if (section && section.pageRef.current) {
+        sectionWrapperRef.current.scrollTop =
+          section.pageRef.current.offsetTop -
+          headerRef.current.offsetHeight -
+          400;
       }
     }, 200);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [activeLink]);
 
   return (
@@ -320,7 +300,7 @@ const PrivacyPage = () => {
             separator: { color: "white" }
           }}
         >
-          {items}
+          {breadcrumbs}
         </Breadcrumbs>
       </div>
       <Flex className={classes.mainWrap}>
@@ -351,15 +331,16 @@ const PrivacyPage = () => {
                 have any questions.
               </Text>
             </div>
-            <PrivacyScope innerRef={refs.privacyScopeRef} />
-            <InformationCollection innerRef={refs.informationCollectionRef} />
-            <InformationProcessing innerRef={refs.informationProcessingRef} />
-            <InformationSharing innerRef={refs.informationSharingRef} />
-            <Security innerRef={refs.securityRef} />
-            <DataRetention innerRef={refs.dataRetentionRef} />
-            <PrivacyModification innerRef={refs.privacyModificationRef} />
-            <GlobalOperations innerRef={refs.globalOperationsRef} />
-            <DataAuthority innerRef={refs.dataAuthorityRef} />
+            <PrivacyScope innerRef={pageSections[0].pageRef} />
+            <InformationCollection innerRef={pageSections[2].pageRef} />
+            <InformationProcessing innerRef={pageSections[4].pageRef} />
+            <InformationSharing innerRef={pageSections[3].pageRef} />
+            <Security innerRef={pageSections[6].pageRef} />
+            <DataRetention innerRef={pageSections[8].pageRef} />
+            <PrivacyModification innerRef={pageSections[1].pageRef} />
+            <GlobalOperations innerRef={pageSections[5].pageRef} />
+            <YourRights innerRef={pageSections[7].pageRef} />
+            <DataAuthority innerRef={pageSections[9].pageRef} />
           </div>
         </ScrollArea>
       </Flex>

@@ -1,14 +1,15 @@
 import { Title, Text, List } from "@mantine/core";
 import { RefObject } from "react";
-import useStyles from "./general";
-type propType = {
+import usePrivacyPolicyStyles from "./general";
+interface Props {
   innerRef: RefObject<HTMLDivElement>;
-};
-const GlobalOperations = ({ innerRef }: propType) => {
-  const { classes } = useStyles();
+}
+
+const GlobalOperations: React.FC<Props> = ({ innerRef }) => {
+  const { classes } = usePrivacyPolicyStyles();
   return (
     <div className={classes.pageSection} id="global-ops" ref={innerRef}>
-      <Title className={classes.pageTitle}>Our global operations</Title>
+      <Title className={classes.pageTitle} >Our global operations</Title>
       <Text className={classes.paragraph}>
         Globally, we share the data we acquire with our partners, service
         providers, and other third parties as well as internally among our

@@ -1,13 +1,12 @@
-import { RefObject } from "react";
 import { Title, Text, List } from "@mantine/core";
-import useStyles from "./general";
-
-type propType = {
+import { RefObject } from "react";
+import usePrivacyPolicyStyles from "./general";
+interface Props {
   innerRef: RefObject<HTMLDivElement>;
-};
+}
 
-const InformationProcessing = ({ innerRef }: propType) => {
-  const { classes } = useStyles();
+const InformationProcessing: React.FC<Props> = ({ innerRef }) => {
+  const { classes } = usePrivacyPolicyStyles();
   return (
     <div
       className={classes.pageSection}

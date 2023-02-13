@@ -1,25 +1,24 @@
-import {createStyles } from "@mantine/core";
+import { createStyles } from "@mantine/core";
 
-const useStyles = createStyles(() => (
-  {
+const usePrivacyPolicyStyles = createStyles(() => ({
   pageTitle: {
-    fontSize: "24px",
-    marginBottom: "12px"
+    fontSize: "1.5rem",
+    marginBottom: "0.75rem",
+    textTransform: "capitalize"
   },
   pageSection: {
-    paddingTop: "0px"
+    paddingTop: "0"
   },
   subHeading: {
-    marginBottom: "12px",
-    lineHeight: "20px"
+    marginBottom: "0.75rem",
+    lineHeight: "1.25rem"
   },
   paragraph: {
-    marginBottom: "20px"
+    marginBottom: "1.25rem"
   },
   list: {
-    marginBottom: "16px"
+    marginBottom: "1rem"
   }
-}
-));
+}));
 
-export default useStyles
+export default usePrivacyPolicyStyles;

@@ -1,13 +1,12 @@
 import { Title, Text } from "@mantine/core";
 import { RefObject } from "react";
 import { Link } from "react-router-dom";
-import useStyles from "./general";
-
-type propType = {
+import usePrivacyPolicyStyles from "./general";
+interface Props {
   innerRef: RefObject<HTMLDivElement>;
-};
-const YourRights = ({ innerRef }: propType) => {
-  const { classes } = useStyles();
+}
+const YourRights: React.FC<Props> = ({ innerRef }) => {
+  const { classes } = usePrivacyPolicyStyles();
   return (
     <div className={classes.pageSection} id="rights" ref={innerRef}>
       <Title className={classes.pageTitle}>Your Rights</Title>
