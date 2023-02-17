@@ -3,6 +3,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { useAppSelector } from "@zuri/utilities";
 import { Outlet, useNavigation } from "react-router-dom";
 import { withMantine } from "../Wrappers/Mantine";
+import { Footer } from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 
@@ -14,12 +15,15 @@ export const Layout = withMantine(() => {
   const navigation = useNavigation();
   const theme = useMantineTheme();
 
-  const { headerVisible, sideBarVisible } = useAppSelector(({ ui }) => {
-    return {
-      headerVisible: ui.headerVisible,
-      sideBarVisible: ui.sideBarVisible
-    };
-  });
+  const { headerVisible, sideBarVisible, footerVisible } = useAppSelector(
+    ({ ui }) => {
+      return {
+        headerVisible: ui.headerVisible,
+        sideBarVisible: ui.sideBarVisible,
+        footerVisible: ui.footerVisible
+      };
+    }
+  );
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
@@ -28,6 +32,10 @@ export const Layout = withMantine(() => {
     <AppShell
       styles={{
         main: {
+          paddingLeft: 0,
+          paddingRight: 0,
+          paddingBottom: 0,
+          overflowX: "hidden",
           background:
             theme.colorScheme === "dark"
               ? theme.colors.dark[8]
@@ -35,7 +43,7 @@ export const Layout = withMantine(() => {
           padding: 0
         }
       }}
-      navbarOffsetBreakpoint="sm"
+      navbarOffsetBreakpoint={0}
       header={
         headerVisible ? (
           <Header
@@ -43,12 +51,10 @@ export const Layout = withMantine(() => {
             toggleDrawer={toggleDrawer}
             closeDrawer={closeDrawer}
             links={[
+              { link: "/pricing", label: "Pricing" },
+              { link: "/about", label: "About ZuriChat" },
               { link: "/downloads", label: "Downloads" },
-              { link: "/documentation", label: "Documentation" },
-              {
-                label: "About",
-                links: [{ link: "/contact", label: "Contact" }]
-              }
+              { link: "/contact", label: "Contact Us" }
             ]}
           />
         ) : (
@@ -62,7 +68,10 @@ export const Layout = withMantine(() => {
           <Loader size="xl" />
         </Center>
       ) : (
-        <Outlet />
+        <>
+          <Outlet />
+          {footerVisible ? <Footer /> : <></>}
+        </>
       )}
     </AppShell>
   );
