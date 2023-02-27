@@ -161,12 +161,16 @@ export const Header: React.FC<HeaderProps> = props => {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button size="lg" variant="subtle">
-              Log in
-            </Button>
-            <Button size="lg" variant="filled">
-              Sign up
-            </Button>
+            <Link to="/login">
+              <Button size="lg" variant="subtle">
+                Log in
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button size="lg" variant="filled">
+                Sign up
+              </Button>
+            </Link>
           </Group>
 
           <Burger
