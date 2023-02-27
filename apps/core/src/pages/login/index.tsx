@@ -1,4 +1,5 @@
 import {
+  Alert,
   Anchor,
   Button,
   createStyles,
@@ -9,8 +10,11 @@ import {
   TextInput
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { IconAlertCircle } from "@tabler/icons";
 import { FormTitle } from "@zuri/ui";
 import { authApi } from "@zuri/utilities";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles(theme => ({
   form: {
@@ -49,7 +53,10 @@ const useStyles = createStyles(theme => ({
 export const LoginPage: React.FC = () => {
   const { classes, theme } = useStyles();
   const { useLoginUserMutation } = authApi;
-  const [mutate] = useLoginUserMutation();
+  const [mutate, { isLoading: loginRequestLoading, data }] =
+    useLoginUserMutation();
+
+  const [error, setError] = useState<string | null>("");
 
   const LoginForm = useForm({
     initialValues: {
@@ -64,13 +71,30 @@ export const LoginPage: React.FC = () => {
     }
   });
 
-  const handleSubmit = (values: typeof LoginForm.values) => {
-    mutate(values);
+  const handleSubmit = async (values: typeof LoginForm.values) => {
+    setError(null);
+    await mutate(values);
+
+    if (!data) {
+      setError("An Error occured");
+    }
   };
 
   return (
     <Paper className={classes.form} radius={0}>
       <FormTitle title="Welcome back" />
+
+      {error && (
+        <Alert
+          icon={<IconAlertCircle size={16} />}
+          title="Bummer!"
+          color="red"
+          variant="filled"
+          my="md"
+        >
+          {error}
+        </Alert>
+      )}
 
       <form onSubmit={LoginForm.onSubmit(values => handleSubmit(values))}>
         <TextInput
@@ -103,6 +127,7 @@ export const LoginPage: React.FC = () => {
           bg={theme.colors.primary[9]}
           mb={25}
           type="submit"
+          loading={loginRequestLoading}
         >
           Login
         </Button>
@@ -136,11 +161,11 @@ export const LoginPage: React.FC = () => {
         mb={25}
       >
         New to Zurichat ?{" "}
-        <Anchor<"a">
-          href="#"
+        <Anchor
+          component={Link}
+          to="/signup"
           weight={700}
           color={theme.colors.primary[9]}
-          onClick={event => event.preventDefault()}
           className={classes.link}
         >
           Sign Up
