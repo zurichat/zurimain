@@ -18,13 +18,7 @@ module.exports = webpackConfigEnv => {
   standalonePlugin.options.importMapUrl = "../root-config/src/importmap.json";
   //   standalonePlugin.options.importMapUrl = new URL("https://zuri.chat/importmap.json");
 
-  const externals = [
-    /^rxjs\/?.*$/,
-    "react",
-    "react-dom",
-    "react-redux",
-    "react-router-dom"
-  ];
+  const externals = ["react", "react-dom", "react-redux", "react-router-dom"];
 
   return merge(defaultConfig, {
     // customizations go here
