@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { ApiResponse, RegisterInput, User } from "@zuri/types";
 import { BASE_API_URL } from "../../../constants";
-import { userApi } from "./userApi";
+import { userSliceActions } from "./slice";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -33,10 +33,10 @@ export const authApi = createApi({
           }
         };
       },
-      async onQueryStarted(args, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
-          await queryFulfilled;
-          await dispatch(userApi.endpoints.getMe.initiate(null));
+          const { data } = await queryFulfilled;
+          dispatch(userSliceActions.setUser(data.data.user));
         } catch (error) {
           console.error(error);
         }
