@@ -1,6 +1,5 @@
-import { LoginWrapper } from "@zuri/ui";
+import { Layout as Mainlayout, LoginWrapper } from "@zuri/ui";
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import ErrorPage from "../pages/error/error";
 import LoginPage from "../pages/onboarding/LoginPage";
 import SignUpPage from "../pages/onboarding/Register";
@@ -10,7 +9,7 @@ import { getExternalRoutes } from "./routes";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Mainlayout />,
     errorElement: <ErrorPage />,
     children: getExternalRoutes()
   },
