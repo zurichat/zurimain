@@ -1,13 +1,14 @@
 import {
-  Paper,
-  createStyles,
-  TextInput,
-  Button,
-  Text,
   Anchor,
-  Divider
+  Button,
+  createStyles,
+  Divider,
+  Paper,
+  Text,
+  TextInput
 } from "@mantine/core";
 import { FormTitle } from "@zuri/ui";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles(theme => ({
   loginPage: {
@@ -88,12 +89,6 @@ const useStyles = createStyles(theme => ({
     display: "block",
     marginLeft: "auto",
     marginRight: "auto"
-  },
-
-  label: {
-    fontSize: "20px",
-    fontWeight: 700,
-    color: "#373B3D"
   }
 }));
 
@@ -103,35 +98,26 @@ export const SignupPage = () => {
     <Paper className={classes.form} radius={0}>
       <FormTitle
         title="Get Started"
-        subtitle="We suggest you use your work email to register"
+        subtitle="Unfortunately you are not able to sign up at the moment"
       />
       <TextInput
+        disabled
         placeholder="name@workemail.com"
         size="md"
         mb={20}
         autoComplete="false"
       />
-      <Button fullWidth mt="xl" size="md" bg={theme.colors.primary[9]} mb={25}>
-        Continue
-      </Button>
-      <Divider
-        my="xs"
-        label="OR"
-        labelPosition="center"
-        color="#B5BEC1"
-        classNames={{ label: classes.label }}
-      />
       <Button
+        disabled
         fullWidth
         mt="xl"
         size="md"
-        bg={"transparent"}
-        variant="outline"
-        color={theme.colors.primary[9]}
+        bg={theme.colors.primary[9]}
         mb={25}
       >
-        Login with Google
+        Continue
       </Button>
+      <Divider my="xs" color="#B5BEC1" />
       <Text
         align="center"
         mt="md"
@@ -140,9 +126,10 @@ export const SignupPage = () => {
         size={20}
         mb={25}
       >
-        New to Zurichat ?{" "}
-        <Anchor<"a">
-          href="#"
+        Already have a Zurichat account?{" "}
+        <Anchor
+          component={Link}
+          to="/login"
           weight={700}
           color={theme.colors.primary[9]}
           onClick={event => event.preventDefault()}
