@@ -1,0 +1,30 @@
+name: Zuri Main Pipeline
+
+on:
+ 
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Git Pull on Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.ZURI_HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /var/www/zuri.chat/zurimain/new_zcmain/zurimain
+            git fetch --all 
+            git reset --hard origin/main
+            git stash
+            git pull origin main
+            yarn install --ignore-engines
+            yarn build
+            pm2 restart new_zcmain
