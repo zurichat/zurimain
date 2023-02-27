@@ -1,15 +1,16 @@
 import {
-  Paper,
-  createStyles,
-  TextInput,
-  PasswordInput,
-  Button,
-  Text,
   Anchor,
-  Divider
+  Button,
+  createStyles,
+  Divider,
+  Paper,
+  PasswordInput,
+  Text,
+  TextInput
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { FormTitle } from "@zuri/ui";
+import { authApi } from "@zuri/utilities";
 
 const useStyles = createStyles(theme => ({
   form: {
@@ -47,6 +48,8 @@ const useStyles = createStyles(theme => ({
 
 export const LoginPage: React.FC = () => {
   const { classes, theme } = useStyles();
+  const { useLoginUserMutation } = authApi;
+  const [mutate] = useLoginUserMutation();
 
   const LoginForm = useForm({
     initialValues: {
@@ -56,15 +59,20 @@ export const LoginPage: React.FC = () => {
 
     validate: {
       password: value =>
-        value.length < 2 ? "Name must have at least 2 letters" : null,
+        value.length > 2 ? null : "Password must have at least 2 letters",
       email: value => (/^\S+@\S+$/.test(value) ? null : "Invalid email")
     }
   });
 
+  const handleSubmit = (values: typeof LoginForm.values) => {
+    mutate(values);
+  };
+
   return (
     <Paper className={classes.form} radius={0}>
       <FormTitle title="Welcome back" />
-      <form>
+
+      <form onSubmit={LoginForm.onSubmit(values => handleSubmit(values))}>
         <TextInput
           placeholder="name@workemail.com"
           size="md"
@@ -94,6 +102,7 @@ export const LoginPage: React.FC = () => {
           size="md"
           bg={theme.colors.primary[9]}
           mb={25}
+          type="submit"
         >
           Login
         </Button>
