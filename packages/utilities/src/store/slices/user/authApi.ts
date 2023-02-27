@@ -6,7 +6,7 @@ import { userApi } from "./userApi";
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_API_URL}/api/auth/`
+    baseUrl: `${BASE_API_URL}/auth/`
   }),
   endpoints: builder => ({
     registerUser: builder.mutation<ApiResponse, RegisterInput>({
@@ -30,8 +30,7 @@ export const authApi = createApi({
           headers: {
             "Content-Type": "application/json",
             accept: "application/json"
-          },
-          credentials: "include"
+          }
         };
       },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
