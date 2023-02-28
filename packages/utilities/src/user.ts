@@ -1,12 +1,15 @@
 import { User } from "@zuri/types";
+import { store } from "./store";
 
 /**
- * @returns {Promise<object>} returns an object containing the user's info
+ * @returns {User} returns an object containing the user's info
  *
  * @description get the currently logged in user's info from the local cache or the server
  */
-export const getUserInfo = async (): Promise<User> => {
-  const user = {} as User;
+export const getUserInfo = (): User => {
+  const user = store.getState().user.user;
+
+  if (!user) throw Error("There is no user logged in");
 
   return user;
 };

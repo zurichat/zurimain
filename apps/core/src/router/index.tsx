@@ -1,14 +1,50 @@
+import { Layout as Mainlayout, LoginWrapper } from "@zuri/ui";
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import ErrorPage from "../pages/error/error";
+import ErrorPage from "../pages/error";
+import LoginPage from "../pages/login";
+import SignUpPage from "../pages/signup";
+import WorkspaceLogin from "../pages/workspace";
 import { getExternalRoutes } from "./routes";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Mainlayout />,
     errorElement: <ErrorPage />,
     children: getExternalRoutes()
+  },
+  {
+    path: "login",
+    element: <LoginWrapper />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <LoginPage />
+      }
+    ]
+  },
+  {
+    path: "signup",
+    element: <LoginWrapper />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <SignUpPage />
+      }
+    ]
+  },
+  {
+    path: "workspace",
+    element: <LoginWrapper />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <WorkspaceLogin />
+      }
+    ]
   }
 ]);
 

@@ -1,4 +1,6 @@
 import { User } from "@zuri/types";
+import { emailRegex } from "./regex";
+import { store } from "./store";
 
 /**
  * @param {string} userEmail email of the user to get
@@ -15,8 +17,6 @@ export const getWorkspaceUser = async (
   token: string
 ): Promise<User | undefined> => {
   // User identifier should be email address
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (!userEmail.match(emailRegex))
     throw Error("Workspace user email must be a valid email address.");
 
@@ -37,11 +37,9 @@ export const getWorkspaceUser = async (
  * @description uses the email to get the user's info in the current workspace from the local cache or the server
  */
 export const getCurrentWorkspaceUser = async (): Promise<User> => {
-  const userFromStorage = sessionStorage.getItem("user");
+  const user = store.getState().user.user;
 
-  if (!userFromStorage) throw Error("No user is available");
-
-  const user = JSON.parse(userFromStorage);
+  if (!user) throw Error("There is no user logged in");
 
   const currentWorkspaceUsers = await getCurrentWorkspaceUsers();
 

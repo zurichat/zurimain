@@ -35,6 +35,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@mantine/core": "^5.10.1",
+    "@mantine/form": "^5.10.2",
     "@mantine/hooks": "^5.10.1",
     "@tabler/icons": "^1.119.0",
     "@zuri/utilities": "*",
