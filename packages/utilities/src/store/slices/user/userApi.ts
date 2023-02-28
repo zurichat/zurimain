@@ -6,7 +6,7 @@ import { userSliceActions } from "./slice";
 export const userApi = createApi({
   reducerPath: "userApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_API_URL}/api/users/`
+    baseUrl: `${BASE_API_URL}/users/`
   }),
   tagTypes: ["User"],
   endpoints: builder => ({
