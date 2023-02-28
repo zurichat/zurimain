@@ -194,10 +194,10 @@ const useStyles = createStyles(theme => ({
 }));
 
 const breadcrumbs = [
-  { title: "Privacy & Terms ", href: "#" },
-  { title: "Privacy policy", href: "#" }
-].map((item, index) => (
-  <Anchor href={item.href} key={index}>
+  { id: 1, title: "Privacy & Terms ", href: "#" },
+  { id: 2, title: "Privacy policy", href: "#" }
+].map((item) => (
+  <Anchor href={item.href} key={item.id}>
     {item.title}
   </Anchor>
 ));
