@@ -4,6 +4,7 @@ interface Props {
   title: string;
   subtitle?: string;
   boldSubtitle?: string;
+  subtitleContinue?: string;
 }
 
 const useStyles = createStyles(theme => ({
@@ -27,7 +28,8 @@ const useStyles = createStyles(theme => ({
 export const FormTitle: React.FC<Props> = ({
   title,
   subtitle,
-  boldSubtitle
+  boldSubtitle,
+  subtitleContinue
 }) => {
   const { classes } = useStyles();
   return (
@@ -40,6 +42,7 @@ export const FormTitle: React.FC<Props> = ({
         <Text display={"inline"} weight={700}>
           {boldSubtitle}
         </Text>
+        {subtitleContinue}
       </Text>
     </div>
   );

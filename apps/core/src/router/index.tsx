@@ -4,6 +4,7 @@ import ErrorPage from "../pages/error";
 import LoginPage from "../pages/login";
 import SignUpPage from "../pages/signup";
 import AlternativeSignup from "../pages/alternativeSignup";
+import AlternativeSignupOtp from "../pages/alternativeSignup/Otp";
 import WorkspaceLogin from "../pages/workspace";
 import { getExternalRoutes } from "./routes";
 
@@ -55,6 +56,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <AlternativeSignup />
+      }
+    ]
+  },
+  {
+    path: "otp",
+    element: <LoginWrapper />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <AlternativeSignupOtp />
       }
     ]
   }
