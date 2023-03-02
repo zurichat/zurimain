@@ -10,7 +10,7 @@ import {
   TextInput
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconAlertCircle } from "@tabler/icons";
+import { IconAlertCircle, IconBrandGoogle } from "@tabler/icons";
 import { FormTitle } from "@zuri/ui";
 import { authApi } from "@zuri/utilities";
 import { useState } from "react";
@@ -18,17 +18,22 @@ import { Link } from "react-router-dom";
 
 const useStyles = createStyles(theme => ({
   form: {
-    maxWidth: "480px",
+    maxWidth: "420px",
     width: "100%",
-    background: "transparent",
+    // background: theme.colors.secondary[6],
+    padding: 40,
+    background: "white",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      maxWidth: "480px"
-    }
+      paddingLeft: 20,
+      paddingRight: 20
+    },
+    borderRadius: 15
   },
 
   label: {
-    fontSize: "20px",
-    fontWeight: 700
+    fontSize: 16,
+    color: theme.colors.secondary[8]
+    // fontWeight: 400
   },
 
   inputField: {
@@ -41,12 +46,18 @@ const useStyles = createStyles(theme => ({
   },
 
   outlineBtn: {
-    border: "1px solid #14466F",
-    color: theme.colors.primary[9]
+    color: theme.colors.secondary[5],
+    borderColor: theme.colors.secondary[5]
   },
 
   link: {
-    color: theme.colors.primary[9]
+    color: theme.colors.secondary[9]
+  },
+
+  loginBtn: {
+    "&:hover": {
+      backgroundColor: theme.fn.lighten(theme.colors.secondary[5], 0.05)
+    }
   }
 }));
 
@@ -82,8 +93,10 @@ export const LoginPage: React.FC = () => {
 
   return (
     <Paper className={classes.form} radius={0}>
-      <FormTitle title="Welcome back" />
-
+      <FormTitle
+        title="Welcome back"
+        subtitle="We are so excited to have you here"
+      />
       {error && (
         <Alert
           icon={<IconAlertCircle size={16} />}
@@ -95,7 +108,26 @@ export const LoginPage: React.FC = () => {
           {error}
         </Alert>
       )}
-
+      <Button
+        fullWidth
+        mt="xl"
+        size="md"
+        variant="outline"
+        // disabled={true}
+        className={classes.outlineBtn}
+        leftIcon={<IconBrandGoogle size={14} />}
+      >
+        Login with Google
+      </Button>
+      <Divider
+        my="md"
+        label="OR"
+        labelPosition="center"
+        variant="dashed"
+        labelProps={{ color: theme.colors.secondary[5] }}
+        color="#B5BEC1"
+        classNames={{ label: classes.label }}
+      />
       <form onSubmit={LoginForm.onSubmit(values => handleSubmit(values))}>
         <TextInput
           placeholder="name@workemail.com"
@@ -117,55 +149,35 @@ export const LoginPage: React.FC = () => {
           }}
           {...LoginForm.getInputProps("password")}
         />
-        <Text align="right" mb={20} size={12} color={"#626769"}>
+        <Text align="right" mb={20} size={16} color={theme.colors.secondary[9]}>
           Forgot Password
         </Text>
         <Button
           fullWidth
           mt="xl"
           size="md"
-          bg={theme.colors.primary[9]}
-          mb={25}
+          bg={theme.colors.secondary[5]}
+          mb={20}
           type="submit"
           loading={loginRequestLoading}
+          className={classes.loginBtn}
         >
           Login
         </Button>
       </form>
-      <Divider
-        my="xs"
-        label="OR"
-        labelPosition="center"
-        labelProps={{ color: "#373B3D" }}
-        color="#B5BEC1"
-        classNames={{ label: classes.label }}
-      />
-      <Button
-        fullWidth
-        mt="xl"
-        size="md"
-        variant="outline"
-        color={theme.colors.primary[9]}
-        mb={25}
-        className={classes.outlineBtn}
-        disabled={true}
-      >
-        Login with Google
-      </Button>
       <Text
-        align="center"
-        mt="md"
-        color={"#373B3D"}
-        weight={"700"}
-        size={20}
-        mb={25}
+        align="left"
+        color={theme.colors.secondary[7]}
+        weight={"400"}
+        size={16}
+        mr={5}
       >
-        New to Zurichat ?{" "}
+        Are you new to Zurichat ?{"  "}
         <Anchor
           component={Link}
           to="/signup"
-          weight={700}
-          color={theme.colors.primary[9]}
+          weight={400}
+          color={theme.colors.secondary[9]}
           className={classes.link}
         >
           Sign Up

@@ -9,10 +9,18 @@ interface Props {
 const useStyles = createStyles(theme => ({
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: "40px",
-    lineHeight: "50px",
+    fontSize: "26px",
+    lineHeight: "30px",
     fontWeight: 700,
-    color: "#1E2122"
+    color: theme.colors.secondary[5],
+    textAlign: "left"
+  },
+  subtitle: {
+    textAlign: "left",
+    marginBottom: 15,
+    fontSize: 16,
+    color: theme.colors.secondary[7],
+    fontWeight: 400
   }
 }));
 
@@ -24,10 +32,10 @@ export const FormTitle: React.FC<Props> = ({
   const { classes } = useStyles();
   return (
     <div>
-      <Title order={2} className={classes.title} align="center" mt="md" mb={20}>
+      <Title order={2} className={classes.title} align="center" mb={5}>
         {title}
       </Title>
-      <Text align="center" mb={20} size={20} weight={400} color="#373B3D">
+      <Text className={classes.subtitle}>
         {subtitle}{" "}
         <Text display={"inline"} weight={700}>
           {boldSubtitle}
