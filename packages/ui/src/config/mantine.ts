@@ -42,7 +42,8 @@ export const mantineConfig: Partial<MantineThemeOverride> = {
       "#626769",
       "#5DA7E3",
       "#4978F0"
-    ]
+    ],
+    tertiary: ["#94C8F3"]
   },
   primaryColor: "primary"
 };

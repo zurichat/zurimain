@@ -35,6 +35,9 @@ const useStyles = createStyles(theme => ({
   },
   link: {
     color: theme.colors.secondary[9]
+  },
+  continueBtn: {
+    "&:invalid": { background: theme.colors.secondary[5] }
   }
 }));
 
@@ -83,6 +86,7 @@ export const SignupPage = () => {
         size="md"
         bg={theme.colors.secondary[5]}
         mb={25}
+        className={classes.continueBtn}
       >
         Continue
       </Button>
