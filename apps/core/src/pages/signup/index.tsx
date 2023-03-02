@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Anchor,
   Button,
@@ -9,132 +10,98 @@ import {
 } from "@mantine/core";
 import { FormTitle } from "@zuri/ui";
 import { Link } from "react-router-dom";
+import { IconBrandGoogle } from "@tabler/icons";
 
 const useStyles = createStyles(theme => ({
-  loginPage: {
-    height: "100vh",
-    background: "#FCF7F1"
-  },
-
-  wrapper: {
-    width: "100%",
-    height: "100%",
-    minHeight: "100vh"
-  },
-
-  formContainer: {
-    width: "60%",
-    height: "100%",
-    positon: "relative",
-    padding: "17px",
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      width: "100%"
-    }
-  },
-
-  formHeader: {
-    position: "fixed",
-    left: "0",
-    right: "0",
-    top: "0",
-    height: "75px",
-    borderBottom: "1px solid #F9DBB6",
-    display: "flex",
-    justifyContent: "start",
-    alignItems: "center",
-    paddingLeft: "110px",
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      paddingLeft: "17px"
-    }
-  },
-
-  formLogo: {
-    display: "flex",
-    gap: "10px",
-    justifyContent: "start",
-    alignItems: "center"
-  },
-
   form: {
-    maxWidth: "480px",
+    maxWidth: "420px",
     width: "100%",
-    background: "transparent",
+    // background: theme.colors.secondary[6],
+    padding: 40,
+    background: "white",
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      maxWidth: "480px"
-    }
+      paddingLeft: 20,
+      paddingRight: 20
+    },
+    borderRadius: 15
   },
-
-  formImage: {
-    width: "40%",
-    height: "100%",
-    background: theme.colors.primary[9],
-    color: "white",
-    zIndex: 99,
-    [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
-      display: "none"
-    }
+  label: {
+    fontSize: 16,
+    color: theme.colors.secondary[8]
   },
-
-  title: {
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: "44px",
-    lineHeight: "50px",
-    fontWeight: 700,
-    color: "#1E2122"
+  outlineBtn: {
+    color: theme.colors.secondary[5],
+    borderColor: theme.colors.secondary[5]
   },
-
-  logo: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-    width: 120,
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto"
+  link: {
+    color: theme.colors.secondary[9]
   }
 }));
 
 export const SignupPage = () => {
+  const [emailInput, setEmailInput] = useState("");
   const { classes, theme } = useStyles();
   return (
     <Paper className={classes.form} radius={0}>
       <FormTitle
-        title="Get Started"
-        subtitle="Unfortunately you are not able to sign up at the moment"
+        title="Glad to have you"
+        subtitle="Kindly enter your email address to proceed"
+      />
+      <Button
+        fullWidth
+        mt="xl"
+        size="md"
+        variant="outline"
+        disabled={true}
+        className={classes.outlineBtn}
+        leftIcon={<IconBrandGoogle size={14} />}
+      >
+        Login with Google
+      </Button>
+      <Divider
+        my="md"
+        label="OR"
+        labelPosition="center"
+        variant="dashed"
+        labelProps={{ color: theme.colors.secondary[5] }}
+        color="#B5BEC1"
+        classNames={{ label: classes.label }}
       />
       <TextInput
-        disabled
+        label="Email Address"
         placeholder="name@workemail.com"
         size="md"
         mb={20}
         autoComplete="false"
+        onChange={e => setEmailInput(e.target.value)}
+        labelProps={{ mb: 5 }}
       />
       <Button
-        disabled
+        disabled={!emailInput}
         fullWidth
         mt="xl"
         size="md"
-        bg={theme.colors.primary[9]}
+        bg={theme.colors.secondary[5]}
         mb={25}
       >
         Continue
       </Button>
-      <Divider my="xs" color="#B5BEC1" />
       <Text
-        align="center"
-        mt="md"
-        color={"#373B3D"}
-        weight={"700"}
-        size={20}
-        mb={25}
+        align="left"
+        color={theme.colors.secondary[7]}
+        weight={"400"}
+        size={16}
+        mr={5}
       >
-        Already have a Zurichat account?{" "}
+        Are you new to Zurichat ?{"  "}
         <Anchor
           component={Link}
-          to="/login"
-          weight={700}
-          color={theme.colors.primary[9]}
-          onClick={event => event.preventDefault()}
+          to="/signup"
+          weight={400}
+          color={theme.colors.secondary[9]}
+          className={classes.link}
         >
-          Log In
+          Sign Up
         </Anchor>
       </Text>
     </Paper>

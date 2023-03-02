@@ -33,7 +33,6 @@ const useStyles = createStyles(theme => ({
   label: {
     fontSize: 16,
     color: theme.colors.secondary[8]
-    // fontWeight: 400
   },
 
   inputField: {
@@ -113,7 +112,7 @@ export const LoginPage: React.FC = () => {
         mt="xl"
         size="md"
         variant="outline"
-        // disabled={true}
+        disabled={true}
         className={classes.outlineBtn}
         leftIcon={<IconBrandGoogle size={14} />}
       >
