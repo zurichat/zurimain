@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const useStyles = createStyles(theme => ({
   loginPage: {
     height: "100vh",
-    background: "#FCF7F1"
+    background: theme.colors.secondary[4]
   },
 
   wrapper: {
@@ -38,7 +38,8 @@ const useStyles = createStyles(theme => ({
     right: "0",
     top: "0",
     height: "75px",
-    borderBottom: "1px solid #F9DBB6",
+    borderBottom: "1px solid",
+    borderColor: theme.colors.secondary[5],
     display: "flex",
     justifyContent: "start",
     alignItems: "center",
@@ -80,7 +81,7 @@ const useStyles = createStyles(theme => ({
     fontSize: "44px",
     lineHeight: "50px",
     fontWeight: 700,
-    color: "#1E2122"
+    color: theme.colors.text[3]
   },
 
   logo: {
@@ -117,11 +118,11 @@ export const SignupPage = () => {
       >
         Continue
       </Button>
-      <Divider my="xs" color="#B5BEC1" />
+      <Divider my="xs" color={theme.colors.text[2]} />
       <Text
         align="center"
         mt="md"
-        color={"#373B3D"}
+        color={theme.colors.text[1]}
         weight={"700"}
         size={20}
         mb={25}

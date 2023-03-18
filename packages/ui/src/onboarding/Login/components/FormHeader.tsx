@@ -8,12 +8,13 @@ const useStyles = createStyles(theme => ({
     right: "0",
     top: "0",
     height: "75px",
-    borderBottom: "1px solid #F9DBB6",
+    borderBottom: "1px solid",
+    borderColor: theme.colors.secondary[5],
     display: "flex",
     justifyContent: "start",
     alignItems: "center",
     paddingLeft: "110px",
-    background: "#FCF7F1",
+    background: theme.colors.secondary[4],
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       paddingLeft: "17px"
     }
@@ -36,12 +37,12 @@ const useStyles = createStyles(theme => ({
 }));
 
 export const FormHeader: React.FC = () => {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   return (
     <header className={classes.formHeader}>
       <div className={classes.formLogo}>
         <Image src={Logo} />
-        <Text color={"#1E2122"} size={25} weight={900}>
+        <Text color={theme.colors.text[3]} size={25} weight={900}>
           ZuriChat
         </Text>
       </div>

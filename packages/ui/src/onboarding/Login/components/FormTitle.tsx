@@ -12,7 +12,7 @@ const useStyles = createStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     fontWeight: 700,
-    color: "#1E2122"
+    color: theme.colors.text[3]
   }
 }));
 
@@ -21,13 +21,19 @@ export const FormTitle: React.FC<Props> = ({
   subtitle,
   boldSubtitle
 }) => {
-  const { classes } = useStyles();
+  const { classes, theme } = useStyles();
   return (
     <div>
       <Title order={2} className={classes.title} align="center" mt="md" mb={20}>
         {title}
       </Title>
-      <Text align="center" mb={20} size={20} weight={400} color="#373B3D">
+      <Text
+        align="center"
+        mb={20}
+        size={20}
+        weight={400}
+        color={theme.colors.text[1]}
+      >
         {subtitle}{" "}
         <Text display={"inline"} weight={700}>
           {boldSubtitle}

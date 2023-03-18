@@ -13,7 +13,7 @@ import { FormTitle } from "@zuri/ui";
 const useStyles = createStyles(theme => ({
   loginPage: {
     height: "100vh",
-    background: "#FCF7F1"
+    background: theme.colors.secondary[4]
   },
 
   wrapper: {
@@ -38,7 +38,8 @@ const useStyles = createStyles(theme => ({
     right: "0",
     top: "0",
     height: "75px",
-    borderBottom: "1px solid #F9DBB6",
+    borderBottom: "1px solid ",
+    borderColor: theme.colors.secondary[5],
     display: "flex",
     justifyContent: "start",
     alignItems: "center",
@@ -67,7 +68,7 @@ const useStyles = createStyles(theme => ({
   formImage: {
     width: "40%",
     height: "100%",
-    background: "#14466F",
+    background: theme.colors.primary[9],
     color: "white",
     zIndex: 99,
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
@@ -80,7 +81,7 @@ const useStyles = createStyles(theme => ({
     fontSize: "40px",
     lineHeight: "50px",
     fontWeight: 700,
-    color: "#1E2122",
+    color: theme.colors.text[3],
     [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
       fontSize: "28px"
     }
@@ -97,7 +98,7 @@ const useStyles = createStyles(theme => ({
   label: {
     fontSize: "20px",
     fontWeight: 700,
-    color: "#373B3D"
+    color: theme.colors.text[1]
   },
 
   fullwidth: {
@@ -108,16 +109,17 @@ const useStyles = createStyles(theme => ({
     width: "100%",
     maxWidth: "270px",
     backgroundColor: "transparent",
-    color: "#14466F"
+    color: theme.colors.primary[9]
   },
 
   outlineBtn: {
-    border: "1px solid #14466F",
+    border: "1px solid ",
+    borderColor: theme.colors.primary[9],
     color: theme.colors.primary[9]
   },
 
   link: {
-    color: "#14466F"
+    color: theme.colors.primary[9]
   }
 }));
 
@@ -142,7 +144,7 @@ export const WorkspaceLogin = () => {
           autoComplete="false"
           classNames={{ input: classes.urlField }}
         />
-        <Text weight={700} size={20} color="#373B3D">
+        <Text weight={700} size={20} color={theme.colors.text[1]}>
           .zurichat.com
         </Text>
       </Flex>
@@ -152,7 +154,7 @@ export const WorkspaceLogin = () => {
       <Text
         align="center"
         mt="md"
-        color={"#373B3D"}
+        color={theme.colors.text[1]}
         weight={"400"}
         size={16}
         mb={25}
@@ -172,8 +174,8 @@ export const WorkspaceLogin = () => {
         my="xs"
         label="OR"
         labelPosition="center"
-        labelProps={{ color: "#373B3D" }}
-        color="#B5BEC1"
+        labelProps={{ color: theme.colors.text[1] }}
+        color={theme.colors.text[2]}
         classNames={{ label: classes.label }}
       />
       <Button
