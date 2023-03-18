@@ -41,7 +41,9 @@ const useStyles = createStyles(theme => ({
   },
 
   outlineBtn: {
-    border: "1px solid #14466F",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: theme.colors.border[0],
     color: theme.colors.primary[9]
   },
 
@@ -117,7 +119,7 @@ export const LoginPage: React.FC = () => {
           }}
           {...LoginForm.getInputProps("password")}
         />
-        <Text align="right" mb={20} size={12} color={"#626769"}>
+        <Text align="right" mb={20} size={12} color={theme.colors.text[0]}>
           Forgot Password
         </Text>
         <Button
@@ -136,8 +138,8 @@ export const LoginPage: React.FC = () => {
         my="xs"
         label="OR"
         labelPosition="center"
-        labelProps={{ color: "#373B3D" }}
-        color="#B5BEC1"
+        labelProps={{ color: theme.colors.text[1] }}
+        color={theme.colors.text[2]}
         classNames={{ label: classes.label }}
       />
       <Button
@@ -155,7 +157,7 @@ export const LoginPage: React.FC = () => {
       <Text
         align="center"
         mt="md"
-        color={"#373B3D"}
+        color={theme.colors.text[1]}
         weight={"700"}
         size={20}
         mb={25}
