@@ -4,7 +4,7 @@ import type {
   MantineThemeOverride
 } from "@mantine/core";
 
-type ExtendedCustomColors = 'primary' | 'secondary' | DefaultMantineColor;
+type ExtendedCustomColors = "primary" | "secondary" | DefaultMantineColor;
 
 declare module "@mantine/core" {
   export interface MantineThemeColorsOverride {
@@ -31,16 +31,20 @@ export const mantineConfig: Partial<MantineThemeOverride> = {
       "#0f3555",
       "#14466F"
     ],
-    secondary:[
-      "#FBBB6A",//primary 1
-      "#FDCB8C",//primary 2
-      "#FCDAB0",//primary 3
-      "#FBE9D2",//primary 4
-      "#FCF7F1" //primary 5
+    secondary: [
+      "#FBBB6A", //primary 1
+      "#FDCB8C", //primary 2
+      "#FCDAB0", //primary 3
+      "#FBE9D2", //primary 4
+      "#FCF7F1", //primary 5
+      "#14466F", //primary 6
+      "#C3DFF6", //primary 7
+      "#626769", //primary 8
+      "#5DA7E3", //primary 9
+      "#4978F0" //primary 10
     ],
-    orange: [
-      "#F24F4F"
-    ]
+    tertiary: ["#94C8F3", "#1E2122"],
+    orange: ["#F24F4F"]
   },
   primaryColor: "primary"
 };

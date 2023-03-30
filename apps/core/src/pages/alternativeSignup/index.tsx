@@ -7,7 +7,9 @@ import {
   Paper,
   PasswordInput,
   Text,
-  TextInput
+  TextInput,
+  Flex,
+  Checkbox
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconAlertCircle, IconBrandGoogle } from "@tabler/icons";
@@ -60,7 +62,7 @@ const useStyles = createStyles(theme => ({
   }
 }));
 
-export const LoginPage: React.FC = () => {
+export const AlternativeSignup: React.FC = () => {
   const { classes, theme } = useStyles();
   const { useLoginUserMutation } = authApi;
   const [mutate, { isLoading: loginRequestLoading, data }] =
@@ -128,19 +130,43 @@ export const LoginPage: React.FC = () => {
         classNames={{ label: classes.label }}
       />
       <form onSubmit={LoginForm.onSubmit(values => handleSubmit(values))}>
+        <Flex gap={5} mb={15}>
+          <TextInput
+            label="First Name"
+            labelProps={{ mb: 5, font: "700" }}
+            placeholder="Enter your first name"
+            size="md"
+            autoComplete="false"
+            classNames={{ input: classes.inputField }}
+            {...LoginForm.getInputProps("email")}
+          />
+          <TextInput
+            label="Last Name"
+            labelProps={{ mb: 5 }}
+            placeholder="Enter your last name"
+            size="md"
+            autoComplete="false"
+            classNames={{ input: classes.inputField }}
+            {...LoginForm.getInputProps("email")}
+          />
+        </Flex>
         <TextInput
-          placeholder="name@workemail.com"
+          label="Email Address"
+          labelProps={{ mb: 5 }}
+          placeholder="Enter your email here"
           size="md"
-          mb={20}
+          mb={15}
           autoComplete="false"
           classNames={{ input: classes.inputField }}
           {...LoginForm.getInputProps("email")}
         />
         <PasswordInput
-          placeholder="Enter password"
+          label="Password"
+          labelProps={{ mb: 5 }}
+          placeholder="Enter your password here"
           mt="md"
           size="md"
-          mb={20}
+          mb={15}
           autoComplete="false"
           classNames={{
             input: classes.inputField,
@@ -148,9 +174,26 @@ export const LoginPage: React.FC = () => {
           }}
           {...LoginForm.getInputProps("password")}
         />
-        <Text align="right" mb={20} size={16} color={theme.colors.secondary[9]}>
-          Forgot Password
-        </Text>
+        <Flex align={"center"}>
+          <Checkbox color={`${theme.colors.secondary[5]}`} mr={10} />
+          <Text
+            align="left"
+            color={theme.colors.secondary[7]}
+            weight={"700"}
+            size={12}
+            mr={5}
+          >
+            I agree to Zurichat ?{"  "}
+            <Anchor
+              component={Link}
+              to="/signup"
+              color={theme.colors.secondary[9]}
+              className={classes.link}
+            >
+              Terms of services & privacy policy
+            </Anchor>
+          </Text>
+        </Flex>
         <Button
           fullWidth
           mt="xl"
@@ -186,4 +229,4 @@ export const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default AlternativeSignup;
